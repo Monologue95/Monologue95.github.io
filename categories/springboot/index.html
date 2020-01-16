@@ -7,22 +7,18 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签 - 冯驰的博客</title>
+<title>分类: springboot - 冯驰的博客</title>
 
 
     <meta name="description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:type" content="website">
 <meta property="og:title" content="冯驰的博客">
-<meta property="og:url" content="http://www.fengchi.site/tags/index.html">
+<meta property="og:url" content="http://www.fengchi.site/categories/springboot/index.html">
 <meta property="og:site_name" content="冯驰的博客">
 <meta property="og:description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://www.fengchi.site/images/og_image.png">
 <meta property="article:author" content="冯驰">
-<meta property="article:tag" content="服务器">
-<meta property="article:tag" content="前后端分离">
-<meta property="article:tag" content="springboot">
-<meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.fengchi.site/images/og_image.png">
 
@@ -99,7 +95,7 @@
                 <a class="navbar-item"
                 href="/categories">微信小程序</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/tags">SpringBoot</a>
                 
                 <a class="navbar-item"
@@ -137,46 +133,82 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">springboot</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T01:55:00.000Z">2020-01-16</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/springboot/">
-                        <span class="tag">springboot</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/springboot/vue/">vue</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/springboot/vue/nginx/">nginx</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/vue/">
-                        <span class="tag">vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
-                        <span class="tag">前后端分离</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 629 个字)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                        <span class="tag">服务器</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/16/%E5%B0%86vue%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E9%80%9A%E8%BF%87%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88springboot%E4%B8%ADstatic-nginx%EF%BC%89/">将vue项目部署到服务器并通过外网访问的两种方式（springboot中static/nginx）</a>
+            
+        </h1>
+        <div class="content">
+            <p>最近一段时间在用vue写一个前端项目，想着做出来的界面可以让小伙伴们一起看看，分享一下。所以就趁着双11在阿里云买了台服务器。实践中我发现vue项目部署到服务器一共有两种方式，当然也有可能有别的方法。<br>一.将vue项目打包后生成的dist目录下的文件复制到springboot项目里面</p>
+<ol>
+<li>前端vue项目先通过npm run build生成dist目录</li>
+</ol>
+<p><img src="%5Cimages%5Cpasted-0.png" alt="upload successful"><br> 2.将dist中目录文件放入springboot项目的resources目录下的static文件夹</p>
+<p><img src="%5Cimages%5Cpasted-1.png" alt="upload successful"><br>3.运行springboot项目，在浏览器地址栏输入localhost:port/index.html(port为后端项目设置的端口号，我设的为8088），所以我输入localhost:8088/index.html即可访问到前端项目</p>
+<p><img src="%5Cimages%5Cpasted-2.png" alt="upload successful"><br>问题来了，这时候会有小伙伴问你这只是本地通过localhost来访问的，别人也访问不了看不到，不是说用外网查看的吗，下面是用外网查看该网页。</p>
+<p>4.通过mvn package将springboot项目打包，生成jar包，然后登陆你的阿里云服务器，将jar放到服务器并运行jar包，即可通过外网访问。</p>
+<p>①到项目根目录打开cmd，输入mvn package进行打包，生成jar文件。</p>
+<p><img src="%5Cimages%5Cpasted-3.png" alt="upload successful"></p>
+<p><img src="%5Cimages%5Cpasted-4.png" alt="upload successful"><br>②将jar包放到你的服务器上（我买的是阿里云） 并执行java -jar memoryTravel-0.0.1-SNAPSHOT.jar，即可运行jar包，项目也就运行起来了。这时候你就可以通过服务器的外网ip来访问前端的界面。</p>
+<p><img src="%5Cimages%5Cpasted-5.png" alt="upload successful"><br> 而我已经做过域名解析了，所以输入<a href="http://www.fengchi.site:8088/index.html也是可以访问的。">www.fengchi.site:8088/index.html也是可以访问的。</a></p>
+<p> 二.将vue项目部署到nginx服务器上，通过设置conf配置文件来进行外网访问。</p>
+<p>1.下载安装nginx，从官网（nginx官网）下载回来解压就好了。接下来打开命令窗口运行nginx服务器</p>
+<p><img src="%5Cimages%5Cpasted-6.png" alt="upload successful"></p>
+<p><img src="%5Cimages%5Cpasted-7.png" alt="upload successful"><br> 修改过配置文件运行</p>
+<p>./nginx -s reload<br>这时候你就可以通过你的外网ip+你设置的端口去访问你的前端项目了（我这里已经把47.105.177.109解决成<a href="http://www.fengchi.site这个域名了）">www.fengchi.site这个域名了）</a></p>
+<p><img src="%5Cimages%5Cpasted-8.png" alt="upload successful"></p>
+
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+
+
+
+</div>
                 
 
 
