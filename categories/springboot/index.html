@@ -179,13 +179,13 @@
 <ol>
 <li>前端vue项目先通过npm run build生成dist目录</li>
 </ol>
-<p><img src="%5Cimages%5Cpasted-0.png%5C" alt="upload successful"><br> 2.将dist中目录文件放入springboot项目的resources目录下的static文件夹</p>
-<p><img src="%5Cimages%5Cpasted-1.png%5C" alt="upload successful"><br>3.运行springboot项目，在浏览器地址栏输入localhost:port/index.html(port为后端项目设置的端口号，我设的为8088），所以我输入localhost:8088/index.html即可访问到前端项目</p>
-<p><img src="%5Cimages%5Cpasted-2.png%5C" alt="upload successful"><br>问题来了，这时候会有小伙伴问你这只是本地通过localhost来访问的，别人也访问不了看不到，不是说用外网查看的吗，下面是用外网查看该网页。</p>
+<p><img src="%5Cimages%5Cpasted-0.png" alt="upload successful"><br> 2.将dist中目录文件放入springboot项目的resources目录下的static文件夹</p>
+<p><img src="%5Cimages%5Cpasted-1.png" alt="upload successful"><br>3.运行springboot项目，在浏览器地址栏输入localhost:port/index.html(port为后端项目设置的端口号，我设的为8088），所以我输入localhost:8088/index.html即可访问到前端项目</p>
+<p><img src="%5Cimages%5Cpasted-2.png" alt="upload successful"><br>问题来了，这时候会有小伙伴问你这只是本地通过localhost来访问的，别人也访问不了看不到，不是说用外网查看的吗，下面是用外网查看该网页。</p>
 <p>4.通过mvn package将springboot项目打包，生成jar包，然后登陆你的阿里云服务器，将jar放到服务器并运行jar包，即可通过外网访问。</p>
 <p>①到项目根目录打开cmd，输入mvn package进行打包，生成jar文件。</p>
-<p><img src="%5Cimages%5Cpasted-3.png%5C" alt="upload successful"></p>
-<p><img src="%5Cimages%5Cpasted-4.png%5C" alt="upload successful"><br>②将jar包放到你的服务器上（我买的是阿里云） 并执行java -jar memoryTravel-0.0.1-SNAPSHOT.jar，即可运行jar包，项目也就运行起来了。这时候你就可以通过服务器的外网ip来访问前端的界面。</p>
+<p><img src="%5Cimages%5Cpasted-3.png" alt="upload successful"></p>
+<p><img src="%5Cimages%5Cpasted-4.png" alt="upload successful"><br>②将jar包放到你的服务器上（我买的是阿里云） 并执行java -jar memoryTravel-0.0.1-SNAPSHOT.jar，即可运行jar包，项目也就运行起来了。这时候你就可以通过服务器的外网ip来访问前端的界面。</p>
 <p><img src="%5Cimages%5Cpasted-5.png" alt="upload successful"><br> 而我已经做过域名解析了，所以输入<a href="http://www.fengchi.site:8088/index.html也是可以访问的。">www.fengchi.site:8088/index.html也是可以访问的。</a></p>
 <p> 二.将vue项目部署到nginx服务器上，通过设置conf配置文件来进行外网访问。</p>
 <p>1.下载安装nginx，从官网（nginx官网）下载回来解压就好了。接下来打开命令窗口运行nginx服务器</p>
