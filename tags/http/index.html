@@ -7,19 +7,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Untitled - 冯驰的博客</title>
+<title>标签: http - 冯驰的博客</title>
 
 
     <meta name="description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Untitled">
-<meta property="og:url" content="http://www.fengchi.site/Untitled/index-1.html">
+<meta property="og:title" content="冯驰的博客">
+<meta property="og:url" content="http://www.fengchi.site/tags/http/index.html">
 <meta property="og:site_name" content="冯驰的博客">
 <meta property="og:description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://www.fengchi.site/images/og_image.png">
-<meta property="article:published_time" content="2020-01-16T02:10:06.000Z">
-<meta property="article:modified_time" content="2020-01-16T02:10:06.853Z">
 <meta property="article:author" content="冯驰">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.fengchi.site/images/og_image.png">
@@ -80,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/avatar.png" alt="Untitled" height="28">
+                <img src="/images/avatar.png" alt="冯驰的博客" height="28">
             
             </a>
         </div>
@@ -135,18 +133,55 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">http</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
 <div class="card">
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-17T08:31:00.000Z">2020-01-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 143 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Untitled
+                <a class="has-link-black-ter" href="/2020/01/17/%E4%BD%BF%E7%94%A8volley%E8%8E%B7%E5%8F%96HTTP%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%93%8D%E5%BA%94%E5%A4%B4/">使用volley获取HTTP网络请求接口的响应头</a>
             
         </h1>
         <div class="content">
-            
+            <p>一丶解决这个问题的时候先得知道什么响应头，与之对应的还有请求头</p>
+<p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p>二.找到volley内部访问请求返回的response，并获取响应头信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected Response&lt;String&gt; parseNetworkResponse(NetworkResponse response) &#123;</span><br><span class="line">  String parsed;</span><br><span class="line">  try &#123;</span><br><span class="line">      parsed &#x3D; new String(response.data, &quot;UTF-8&quot;);</span><br><span class="line">      LogUtil.e(&quot;Header&quot;, response.headers.toString());</span><br><span class="line">  &#125; catch (UnsupportedEncodingException var4) &#123;</span><br><span class="line">      parsed &#x3D; new String(response.data);</span><br><span class="line">  &#125;</span><br><span class="line">  return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>volley内部返回的response可以获取到Header信息，由于header信息是map类型的，所以要获取某个key的值，则通过</p>
+<p>response.headers.get(“key”)来获取。</p>
+
         </div>
         
         
@@ -156,62 +191,11 @@
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'http://www.fengchi.site/Untitled/index-1.html';
-        this.page.identifier = 'Untitled/index-1.html';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
 </div>
                 
 
@@ -699,7 +683,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/avatar.png" alt="Untitled" height="28">
+                    <img src="/images/avatar.png" alt="冯驰的博客" height="28">
                 
                 </a>
                 <p class="is-size-7">

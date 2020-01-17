@@ -183,20 +183,20 @@
 <ol>
 <li>前端vue项目先通过npm run build生成dist目录</li>
 </ol>
-<p><img src="%5Cimages%5Cpasted-0.png" alt="upload successful"><br> 2.将dist中目录文件放入springboot项目的resources目录下的static文件夹</p>
-<p><img src="%5Cimages%5Cpasted-1.png" alt="upload successful"><br>3.运行springboot项目，在浏览器地址栏输入localhost:port/index.html(port为后端项目设置的端口号，我设的为8088），所以我输入localhost:8088/index.html即可访问到前端项目</p>
-<p><img src="%5Cimages%5Cpasted-2.png" alt="upload successful"><br>问题来了，这时候会有小伙伴问你这只是本地通过localhost来访问的，别人也访问不了看不到，不是说用外网查看的吗，下面是用外网查看该网页。</p>
+<p><img src="/images/pasted-0.png" alt="upload successful"><br> 2.将dist中目录文件放入springboot项目的resources目录下的static文件夹</p>
+<p><img src="/images/pasted-1.png" alt="upload successful"><br>3.运行springboot项目，在浏览器地址栏输入localhost:port/index.html(port为后端项目设置的端口号，我设的为8088），所以我输入localhost:8088/index.html即可访问到前端项目</p>
+<p><img src="/images/pasted-2.png" alt="upload successful"><br>问题来了，这时候会有小伙伴问你这只是本地通过localhost来访问的，别人也访问不了看不到，不是说用外网查看的吗，下面是用外网查看该网页。</p>
 <p>4.通过mvn package将springboot项目打包，生成jar包，然后登陆你的阿里云服务器，将jar放到服务器并运行jar包，即可通过外网访问。</p>
 <p>①到项目根目录打开cmd，输入mvn package进行打包，生成jar文件。</p>
-<p><img src="%5Cimages%5Cpasted-3.png" alt="upload successful"></p>
-<p><img src="%5Cimages%5Cpasted-4.png" alt="upload successful"><br>②将jar包放到你的服务器上（我买的是阿里云） 并执行java -jar memoryTravel-0.0.1-SNAPSHOT.jar，即可运行jar包，项目也就运行起来了。这时候你就可以通过服务器的外网ip来访问前端的界面。</p>
-<p><img src="%5Cimages%5Cpasted-5.png" alt="upload successful"><br> 而我已经做过域名解析了，所以输入<a href="http://www.fengchi.site:8088/index.html也是可以访问的。">www.fengchi.site:8088/index.html也是可以访问的。</a></p>
+<p><img src="/images/pasted-3.png" alt="upload successful"></p>
+<p><img src="/images/pasted-4.png" alt="upload successful"><br>②将jar包放到你的服务器上（我买的是阿里云） 并执行java -jar memoryTravel-0.0.1-SNAPSHOT.jar，即可运行jar包，项目也就运行起来了。这时候你就可以通过服务器的外网ip来访问前端的界面。</p>
+<p><img src="/images/pasted-5.png" alt="upload successful"><br> 而我已经做过域名解析了，所以输入<a href="http://www.fengchi.site:8088/index.html也是可以访问的。">www.fengchi.site:8088/index.html也是可以访问的。</a></p>
 <p> 二.将vue项目部署到nginx服务器上，通过设置conf配置文件来进行外网访问。</p>
 <p>1.下载安装nginx，从官网（nginx官网）下载回来解压就好了。接下来打开命令窗口运行nginx服务器</p>
-<p><img src="%5Cimages%5Cpasted-6.png" alt="upload successful"></p>
-<p><img src="%5Cimages%5Cpasted-7.png" alt="upload successful"><br> 修改过配置文件运行</p>
+<p><img src="/images/pasted-6.png" alt="upload successful"></p>
+<p><img src="/images/pasted-7.png" alt="upload successful"><br> 修改过配置文件运行</p>
 <p>./nginx -s reload<br>这时候你就可以通过你的外网ip+你设置的端口去访问你的前端项目了（我这里已经把47.105.177.109解决成<a href="http://www.fengchi.site这个域名了）">www.fengchi.site这个域名了）</a></p>
-<p><img src="%5Cimages%5Cpasted-8.png" alt="upload successful"></p>
+<p><img src="/images/pasted-8.png" alt="upload successful"></p>
 
         </div>
         
@@ -269,7 +269,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -281,7 +281,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            4
+                            6
                         </p>
                     </a>
                 </div>
@@ -345,6 +345,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/android/">
+            <span class="level-start">
+                <span class="level-item">android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/springboot/">
             <span class="level-start">
                 <span class="level-item">springboot</span>
@@ -371,7 +379,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" style="font-size: 10px;">前后端分离</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+        <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" style="font-size: 10px;">前后端分离</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
     </div>
 </div>
     
@@ -394,10 +402,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-17T08:31:07.000Z">2020-01-17</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-17T08:31:00.000Z">2020-01-17</time></div>
                     <a href="/2020/01/17/%E4%BD%BF%E7%94%A8volley%E8%8E%B7%E5%8F%96HTTP%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%93%8D%E5%BA%94%E5%A4%B4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用volley获取HTTP网络请求接口的响应头</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/android/">android</a>
                     </p>
                 </div>
             </div>
@@ -475,6 +483,20 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/android/">
+                        <span class="tag">android</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/http/">
+                        <span class="tag">http</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/springboot/">
@@ -536,10 +558,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-17T08:31:07.000Z">2020-01-17</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-17T08:31:00.000Z">2020-01-17</time></div>
                     <a href="/2020/01/17/%E4%BD%BF%E7%94%A8volley%E8%8E%B7%E5%8F%96HTTP%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%93%8D%E5%BA%94%E5%A4%B4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用volley获取HTTP网络请求接口的响应头</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/android/">android</a>
                     </p>
                 </div>
             </div>
@@ -617,6 +639,20 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/android/">
+                        <span class="tag">android</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/http/">
+                        <span class="tag">http</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/springboot/">
