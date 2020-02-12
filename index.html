@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    4 分钟 读完 (大约 637 个字)
                 </span>
                 
                 
@@ -164,7 +164,43 @@
             
         </h1>
         <div class="content">
-            
+            <p>最近一段时间在用vue写一个前端项目，想着做出来的界面可以让小伙伴们一起看看，分享一下。所以就趁着双11在阿里云买了台服务器。实践中我发现vue项目部署到服务器一共有两种方式，当然也有可能有别的方法。</p>
+<h3 id="一-将vue项目打包后生成的dist目录下的文件复制到springboot项目里面"><a href="#一-将vue项目打包后生成的dist目录下的文件复制到springboot项目里面" class="headerlink" title="一.将vue项目打包后生成的dist目录下的文件复制到springboot项目里面"></a>一.将vue项目打包后生成的dist目录下的文件复制到springboot项目里面</h3><ul>
+<li><ol>
+<li>前端vue项目先通过npm run build生成dist目录</li>
+</ol>
+</li>
+</ul>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<ul>
+<li>2.将dist中目录文件放入springboot项目的resources目录下的static文件夹</li>
+</ul>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
+<ul>
+<li>3.运行springboot项目，在浏览器地址栏输入localhost:port/index.html(port为后端项目设置的端口号，我设的为8088），所以我输入localhost:8088/index.html即可访问到前端项目</li>
+</ul>
+<p><img src="/images/pasted-22.png" alt="upload successful"><br>    问题来了，这时候会有小伙伴问你这只是本地通过localhost来访问的，别人也访问不了看不到，不是说用外网查看的吗，下面是用外网查看该网页。</p>
+<ul>
+<li>4.通过mvn package将springboot项目打包，生成jar包，然后登陆你的阿里云服务器，将jar放到服务器并运行jar包，即可通过外网访问。</li>
+</ul>
+<p>①到项目根目录打开cmd，输入mvn package进行打包，生成jar文件。</p>
+<p><img src="/images/pasted-23.png" alt="upload successful"><br><img src="/images/pasted-24.png" alt="upload successful"></p>
+<p>②将jar包放到你的服务器上（我买的是阿里云） 并执行java -jar memoryTravel-0.0.1-SNAPSHOT.jar，即可运行jar包，项目也就运行起来了。这时候你就可以通过服务器的外网ip来访问前端的界面。</p>
+<p><img src="/images/pasted-25.png" alt="upload successful"><br> <strong>而我已经做过域名解析了，所以输入<a href="http://www.fengchi.site:8088/index.html也是可以访问的。">www.fengchi.site:8088/index.html也是可以访问的。</a></strong></p>
+<h3 id="二-将vue项目部署到nginx服务器上，通过设置conf配置文件来进行外网访问。"><a href="#二-将vue项目部署到nginx服务器上，通过设置conf配置文件来进行外网访问。" class="headerlink" title="二.将vue项目部署到nginx服务器上，通过设置conf配置文件来进行外网访问。"></a>二.将vue项目部署到nginx服务器上，通过设置conf配置文件来进行外网访问。</h3><ul>
+<li><ol>
+<li>下载安装nginx，从官网（nginx官网）下载回来解压就好了。接下来打开命令窗口运行nginx服务器</li>
+</ol>
+</li>
+</ul>
+<p><img src="/images/pasted-26.png" alt="upload successful"></p>
+<ul>
+<li>2.修改nginx.conf配置文件</li>
+</ul>
+<p><img src="/images/pasted-27.png" alt="upload successful"><br> <strong>修改过配置文件运行</strong></p>
+<p><code>./nginx -s reload</code><br>这时候你就可以通过你的外网ip+你设置的端口去访问你的前端项目了（我这里已经把47.105.177.109解决成<a href="http://www.fengchi.site这个域名了）">www.fengchi.site这个域名了）</a></p>
+<p><img src="/images/pasted-29.png" alt="upload successful"></p>
+
         </div>
         
         
@@ -231,60 +267,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-07T07:46:44.070Z">2020-01-07</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 123 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/07/hello-world/">Hello World</a>
-            
-        </h1>
-        <div class="content">
-            <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -330,7 +312,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            2
                         </p>
                     </a>
                 </div>
@@ -354,7 +336,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            2
+                            5
                         </p>
                     </a>
                 </div>
@@ -452,7 +434,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/http/" style="font-size: 10px;">http</a>
+        <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a>
     </div>
 </div>
     
@@ -503,25 +485,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:46:44.070Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -539,7 +502,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -558,6 +521,20 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Springboot/">
+                        <span class="tag">Springboot</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/android/">
                         <span class="tag">android</span>
                         <span class="tag is-grey">1</span>
@@ -567,6 +544,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/http/">
                         <span class="tag">http</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nginx/">
+                        <span class="tag">nginx</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -631,25 +615,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:46:44.070Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -667,7 +632,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -686,6 +651,20 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Springboot/">
+                        <span class="tag">Springboot</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/android/">
                         <span class="tag">android</span>
                         <span class="tag is-grey">1</span>
@@ -695,6 +674,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/http/">
                         <span class="tag">http</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nginx/">
+                        <span class="tag">nginx</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
