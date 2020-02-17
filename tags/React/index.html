@@ -151,6 +151,51 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-17T06:40:00.000Z">2020-02-17</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 454 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/">react中使用canvas进行图片合成</a>
+            
+        </h1>
+        <div class="content">
+            <p>最近react项目里需要动态变换图片里的某一个部件，然后整张图片重新加载。想了一下之前在java里是使用的ImageIO和BufferedImage进行合成的，看了一下由于项目需求是动态变换图片的，所以想的方法是利用canvas定义一个画布，然后drawImage，最后使用canvas.toDataURL转换成base64的图片，可供下载。项目代码如下，一个js文件即可实现功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">class photoSynthesis extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.initCanvas &#x3D; this.initCanvas.bind(this)</span><br><span class="line">  &#125;</span><br><span class="line">  initCanvas() &#123;</span><br><span class="line">    let canvas1 &#x3D; document.getElementById(&quot;customCanvas&quot;);</span><br><span class="line">    canvas1.width &#x3D; 800;</span><br><span class="line">    canvas1.height &#x3D; 1300;</span><br><span class="line">    let context1 &#x3D; canvas1.getContext(&quot;2d&quot;);</span><br><span class="line">    context1.rect(0 , 0 , canvas1.width , canvas1.height);</span><br><span class="line">    context1.fillStyle &#x3D; &quot;#fff&quot;;</span><br><span class="line">    context1.fill();</span><br><span class="line">    var myImage &#x3D; new Image();</span><br><span class="line">    myImage.src &#x3D; require(&quot;.&#x2F;diaoding.png&quot;);  &#x2F;&#x2F;背景图片 你自己本地的图片或者在线图片</span><br><span class="line">    myImage.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">    myImage.onload &#x3D; function()&#123;</span><br><span class="line">      context1.drawImage(myImage , 0 , 0 , 627 , 262);</span><br><span class="line">      &#x2F;&#x2F; context1.font &#x3D; &quot;60px Courier New&quot;;</span><br><span class="line">      &#x2F;&#x2F; context1.fillText(&quot;合成的图片&quot;,350,450);</span><br><span class="line">      var myImage2 &#x3D; new Image();</span><br><span class="line">      myImage2.src &#x3D; require(&quot;.&#x2F;zuoce.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">      myImage2.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">      myImage2.onload &#x3D; function()&#123;</span><br><span class="line">        context1.drawImage(myImage2 , 0 , 0 , 138 , 1226);</span><br><span class="line">        &#x2F;&#x2F;var base64 &#x3D; canvas1.toDataURL(&quot;image&#x2F;png&quot;); &#x2F;&#x2F;&quot;image&#x2F;png&quot; 这里注意一下</span><br><span class="line">        &#x2F;&#x2F;var img &#x3D; document.getElementById(&#39;avatar&#39;);</span><br><span class="line">        &#x2F;&#x2F; document.getElementById(&#39;avatar&#39;).src &#x3D; base64;</span><br><span class="line">        &#x2F;&#x2F;img.setAttribute(&#39;src&#39; , base64);</span><br><span class="line">        var myImage3 &#x3D; new Image();</span><br><span class="line">        myImage3.src &#x3D; require(&quot;.&#x2F;houbi1.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">        myImage3.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">        myImage3.onload &#x3D; function()&#123;</span><br><span class="line">          context1.drawImage(myImage3 , 136 , 260 , 360 , 700);</span><br><span class="line">          &#x2F;&#x2F;var base64 &#x3D; canvas1.toDataURL(&quot;image&#x2F;png&quot;); &#x2F;&#x2F;&quot;image&#x2F;png&quot; 这里注意一下</span><br><span class="line">          var myImage4 &#x3D; new Image();</span><br><span class="line">          myImage4.src &#x3D; require(&quot;.&#x2F;youce.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">          myImage4.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">          myImage4.onload &#x3D; function()&#123;</span><br><span class="line">            context1.drawImage(myImage4 , 490 , 0 , 135 , 1205);</span><br><span class="line">            var myImage5 &#x3D; new Image();</span><br><span class="line">            myImage5.src &#x3D; require(&quot;.&#x2F;diban.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">            myImage5.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">            myImage5.onload &#x3D; function()&#123;</span><br><span class="line">              context1.drawImage(myImage5 , 0 , 954 , 630 , 255);</span><br><span class="line">              var base64 &#x3D; canvas1.toDataURL(&quot;image&#x2F;png&quot;); &#x2F;&#x2F;&quot;image&#x2F;png&quot; 这里注意一下</span><br><span class="line">              &#x2F;&#x2F;var img &#x3D; document.getElementById(&#39;avatar&#39;);</span><br><span class="line">              &#x2F;&#x2F; document.getElementById(&#39;avatar&#39;).src &#x3D; base64;</span><br><span class="line">              &#x2F;&#x2F;img.setAttribute(&#39;src&#39; , base64);</span><br><span class="line">          &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.initCanvas()</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidUpdate() &#123;</span><br><span class="line">    this.initCanvas()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; width, height, canvaswidth, canvasheight &#125; &#x3D; this.props</span><br><span class="line">    return (</span><br><span class="line">      &lt;div style&#x3D;&#123;&#123; display:&quot;flex&quot;,flexDirection:&quot;column&quot; &#125;&#125;&gt;</span><br><span class="line">        &lt;div style&#x3D;&#123;&#123; display:&quot;flex&quot;,flexDirection:&quot;row&quot; &#125;&#125;&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 200, height: 83, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;diaoding.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 100, height: 200, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;zuoce.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 103, height: 200, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;houbi1.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 100, height: 200, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;youce.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 200, height: 84, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;diban.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;canvas id&#x3D;&quot;customCanvas&quot; width&#x3D;&#123;canvaswidth&#125; height&#x3D;&#123;canvasheight&#125;&gt;&lt;&#x2F;canvas&gt;</span><br><span class="line">        &#123;&#x2F;* &lt;img id&#x3D;&quot;avatar&quot; &gt;&lt;&#x2F;img&gt; *&#x2F;&#125;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default photoSynthesis;</span><br></pre></td></tr></table></figure>
+
+<p>csdn链接：<br><a href="https://blog.csdn.net/qq_28670711/article/details/104358345">https://blog.csdn.net/qq_28670711/article/details/104358345</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-12T08:48:00.000Z">2020-02-12</time>
                 
                 <div class="level-item">
@@ -235,7 +280,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -259,7 +304,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            7
+                            8
                         </p>
                     </a>
                 </div>
@@ -365,7 +410,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -377,6 +422,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用canvas进行图片合成">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T06:40:00.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用canvas进行图片合成</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -471,7 +535,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -501,9 +565,16 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Canvas/">
+                        <span class="tag">Canvas</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -573,6 +644,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用canvas进行图片合成">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T06:40:00.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用canvas进行图片合成</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/13/1/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序Img标签中斜杠(/)与反斜杠(\)的区别">
@@ -664,7 +754,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -694,9 +784,16 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Canvas/">
+                        <span class="tag">Canvas</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
