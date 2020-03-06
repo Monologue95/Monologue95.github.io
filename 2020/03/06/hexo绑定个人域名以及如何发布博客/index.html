@@ -7,21 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>微信小程序Img标签中斜杠(/)与反斜杠(\)的区别 - 冯驰的博客</title>
+<title>hexo绑定个人域名以及如何发布博客 - 冯驰的博客</title>
 
 
-    <meta name="description" content="最近在写微信小程序，其实里面的坑还是又不少的。今天就遇到一个正反斜杠的问题。正好今天写的是图片上传的模块，本地先上传文件，返回给你一段服务器上的图片的地址，然后在小程序端显示。结果在返回的地址是 后来我在img标签下的src属性放入了这个地址，结果就是图片怎么也出不来。后来分析下来原来是src里面放入的是网络地址，必须使用正斜杠（&#x2F;），而返回给我的地址中存在反斜杠（\），所以图片加载不出来。后来使">
+    <meta name="description" content="绑定个人域名用 hexo 搭建的个人博客，服务器用的是 github 的，然后域名默认也是 github 下的二级域名：username.github.io,我使用的是monologue95.github.io。绑定域名一共三个步骤 ①先在阿里云域名管理的地方进行域名解析  ②设置CNAME 在 hexo 项目下，source 文件夹下面创建 CNAME 文件（没有后缀名的），在里面写上购买的域名">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序Img标签中斜杠(&#x2F;)与反斜杠(\)的区别">
-<meta property="og:url" content="http://www.fengchi.site/2020/02/13/1/index.html">
+<meta property="og:title" content="hexo绑定个人域名以及如何发布博客">
+<meta property="og:url" content="http://www.fengchi.site/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="冯驰的博客">
-<meta property="og:description" content="最近在写微信小程序，其实里面的坑还是又不少的。今天就遇到一个正反斜杠的问题。正好今天写的是图片上传的模块，本地先上传文件，返回给你一段服务器上的图片的地址，然后在小程序端显示。结果在返回的地址是 后来我在img标签下的src属性放入了这个地址，结果就是图片怎么也出不来。后来分析下来原来是src里面放入的是网络地址，必须使用正斜杠（&#x2F;），而返回给我的地址中存在反斜杠（\），所以图片加载不出来。后来使">
+<meta property="og:description" content="绑定个人域名用 hexo 搭建的个人博客，服务器用的是 github 的，然后域名默认也是 github 下的二级域名：username.github.io,我使用的是monologue95.github.io。绑定域名一共三个步骤 ①先在阿里云域名管理的地方进行域名解析  ②设置CNAME 在 hexo 项目下，source 文件夹下面创建 CNAME 文件（没有后缀名的），在里面写上购买的域名">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://www.fengchi.site/images/og_image.png">
-<meta property="article:published_time" content="2020-02-13T09:34:00.000Z">
-<meta property="article:modified_time" content="2020-02-13T09:45:33.994Z">
+<meta property="article:published_time" content="2020-03-06T05:44:00.000Z">
+<meta property="article:modified_time" content="2020-03-06T06:16:59.361Z">
 <meta property="article:author" content="冯驰">
-<meta property="article:tag" content="微信小程序">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.fengchi.site/images/og_image.png">
 
@@ -81,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/avatar.png" alt="微信小程序Img标签中斜杠(/)与反斜杠(\)的区别" height="28">
+                <img src="/images/avatar.png" alt="hexo绑定个人域名以及如何发布博客" height="28">
             
             </a>
         </div>
@@ -143,13 +144,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-13T09:34:00.000Z">2020-02-13</time>
+                <time class="level-item has-text-grey" datetime="2020-03-06T05:44:00.000Z">2020-03-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/hexo/">hexo</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 234 个字)
+                    2 分钟 读完 (大约 280 个字)
                 </span>
                 
                 
@@ -158,21 +163,32 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                微信小程序Img标签中斜杠(/)与反斜杠(\)的区别
+                hexo绑定个人域名以及如何发布博客
             
         </h1>
         <div class="content">
-            <h5 id="最近在写微信小程序，其实里面的坑还是又不少的。今天就遇到一个正反斜杠的问题。正好今天写的是图片上传的模块，本地先上传文件，返回给你一段服务器上的图片的地址，然后在小程序端显示。结果在返回的地址是"><a href="#最近在写微信小程序，其实里面的坑还是又不少的。今天就遇到一个正反斜杠的问题。正好今天写的是图片上传的模块，本地先上传文件，返回给你一段服务器上的图片的地址，然后在小程序端显示。结果在返回的地址是" class="headerlink" title="最近在写微信小程序，其实里面的坑还是又不少的。今天就遇到一个正反斜杠的问题。正好今天写的是图片上传的模块，本地先上传文件，返回给你一段服务器上的图片的地址，然后在小程序端显示。结果在返回的地址是"></a>最近在写微信小程序，其实里面的坑还是又不少的。今天就遇到一个正反斜杠的问题。正好今天写的是图片上传的模块，本地先上传文件，返回给你一段服务器上的图片的地址，然后在小程序端显示。结果在返回的地址是</h5><p><img src="/images/pasted-32.png" alt="upload successful"></p>
-<h5 id="后来我在img标签下的src属性放入了这个地址，结果就是图片怎么也出不来。后来分析下来原来是src里面放入的是网络地址，必须使用正斜杠（-），而返回给我的地址中存在反斜杠（-），所以图片加载不出来。后来使用了字符串的replace方法替换即"><a href="#后来我在img标签下的src属性放入了这个地址，结果就是图片怎么也出不来。后来分析下来原来是src里面放入的是网络地址，必须使用正斜杠（-），而返回给我的地址中存在反斜杠（-），所以图片加载不出来。后来使用了字符串的replace方法替换即" class="headerlink" title="后来我在img标签下的src属性放入了这个地址，结果就是图片怎么也出不来。后来分析下来原来是src里面放入的是网络地址，必须使用正斜杠（/），而返回给我的地址中存在反斜杠（\），所以图片加载不出来。后来使用了字符串的replace方法替换即"></a>后来我在img标签下的src属性放入了这个地址，结果就是图片怎么也出不来。后来分析下来原来是src里面放入的是网络地址，必须使用正斜杠（/），而返回给我的地址中存在反斜杠（\），所以图片加载不出来。后来使用了字符串的replace方法替换即</h5><p> <code>replace(/\\/g,&#39;/&#39;);//替换&quot;\&quot;为&quot;/&quot;</code></p>
-<h5 id="最后替换后的地址是"><a href="#最后替换后的地址是" class="headerlink" title="最后替换后的地址是"></a>最后替换后的地址是</h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
-<h5 id="重新编译"><a href="#重新编译" class="headerlink" title="重新编译"></a>重新编译</h5><h5 id="成功！"><a href="#成功！" class="headerlink" title="成功！"></a>成功！</h5>
+            <h5 id="绑定个人域名"><a href="#绑定个人域名" class="headerlink" title="绑定个人域名"></a>绑定个人域名</h5><p>用 hexo 搭建的个人博客，服务器用的是 github 的，然后域名默认也是 github 下的二级域名：username.github.io,我使用的是monologue95.github.io。绑定域名一共三个步骤</p>
+<p>①先在阿里云域名管理的地方进行域名解析</p>
+<p><img src="/images/pasted-34.png" alt="域名解析界面"></p>
+<p>②设置CNAME</p>
+<p>在 hexo 项目下，source 文件夹下面创建 CNAME 文件（没有后缀名的），在里面写上购买的域名。</p>
+<p><img src="/images/pasted-35.png" alt="upload successful"></p>
+<p>③在 github 上面，打开 username.github.io 项目的（Settings）设置，然后在 GitHub Pages的 Custom domain设置里填上购买的域名。</p>
+<p><img src="/images/pasted-36.png" alt="upload successful"></p>
+<p>域名配置完成，可以通过blog.fengchi.site访问了</p>
+<p><img src="/images/pasted-38.png" alt="upload successful"></p>
+<h5 id="如何发布博客"><a href="#如何发布博客" class="headerlink" title="如何发布博客"></a>如何发布博客</h5><p>通过hexo admin来管理博客 通过localhost://4000/admin来管理<br><img src="/images/pasted-39.png" alt="upload successful"></p>
+<p>然后通过hexo g或者hexo generate去生成静态文件</p>
+<p>然后在通过hexo d或者hexo deploy去部署网站上传到github</p>
+<p>再次访问博客，即可发布成功</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a>
+                    <a class="has-link-grey -link" href="/tags/github/" rel="tag">github</a>, <a class="has-link-grey -link" href="/tags/hexo/" rel="tag">hexo</a>
                 </div>
             </div>
         </div>
@@ -218,17 +234,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">react中使用canvas进行图片合成</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/12/React-antd%E7%9A%84FormItem%E7%BB%93%E5%90%88switch%E8%AE%BE%E7%BD%AEinitialValue%E6%97%A0%E6%95%88/">
-                <span class="level-item">React antd的FormItem结合switch设置initialValue无效</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/">
+                <span class="level-item">react中使用canvas进行图片合成</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -244,8 +253,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://www.fengchi.site/2020/02/13/1/';
-        this.page.identifier = '2020/02/13/1/';
+        this.page.url = 'http://www.fengchi.site/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/';
+        this.page.identifier = '2020/03/06/hexo绑定个人域名以及如何发布博客/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -940,7 +949,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/avatar.png" alt="微信小程序Img标签中斜杠(/)与反斜杠(\)的区别" height="28">
+                    <img src="/images/avatar.png" alt="hexo绑定个人域名以及如何发布博客" height="28">
                 
                 </a>
                 <p class="is-size-7">
