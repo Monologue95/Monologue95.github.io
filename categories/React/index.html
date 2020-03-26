@@ -152,6 +152,108 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-26T07:47:00.000Z">2020-03-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/React/">React</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 570 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/">Js数组整理（React中用数组定位到col，row)）</a>
+            
+        </h1>
+        <div class="content">
+            <p>项目中遇到了一个需求，要求按照返回的数据的category进行分类，然后再根据row，col字段去调整每个item在哪一行那一列，所有先看后台返回给我这样的一个数组。</p>
+<p><img src="/images/pasted-40.png" alt="初始的数组列表"></p>
+<p><img src="/images/pasted-42.png" alt="初始的数组列表"><br>观察下来就是一个简单的数组，里面有大概多少条数据，不存在任何的层级关系。</p>
+<h5 id="一-根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下："><a href="#一-根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下：" class="headerlink" title="一.根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下："></a>一.根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function analysisArray(data)&#123;</span><br><span class="line">  var moth &#x3D; [],</span><br><span class="line">    flag &#x3D; 0,</span><br><span class="line">    list &#x3D; data;</span><br><span class="line">  var wdy &#x3D; &#123;</span><br><span class="line">    title: &#39;&#39;,</span><br><span class="line">    sub_item: &#39;&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  for (var i &#x3D; 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    var az &#x3D; &#39;&#39;;</span><br><span class="line">    for (var j &#x3D; 0; j &lt; moth.length; j++) &#123;</span><br><span class="line">        if (moth[j].title &#x3D;&#x3D; list[i][&#39;category&#39;]) &#123;</span><br><span class="line">            flag &#x3D; 1;</span><br><span class="line">            az &#x3D; j;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (flag &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        var ab &#x3D; moth[az];</span><br><span class="line">        ab.sub_item.push(list[i]);</span><br><span class="line">        flag &#x3D; 0;</span><br><span class="line"> </span><br><span class="line">    &#125; else if (flag &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        wdy &#x3D; &#123;&#125;;</span><br><span class="line">        wdy.title &#x3D; list[i][&#39;category&#39;];</span><br><span class="line">        wdy.sub_item &#x3D; new Array();</span><br><span class="line">        wdy.sub_item.push(list[i]);</span><br><span class="line">        moth.push(wdy);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">   return moth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过这个方法我们可以实现category分类。如下图</p>
+<p><img src="/images/pasted-41.png" alt="按照category分类"></p>
+<h5 id="二-要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下："><a href="#二-要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下：" class="headerlink" title="二.要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下："></a>二.要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function analysisCol(subItem)&#123;</span><br><span class="line">  var list &#x3D; subItem,</span><br><span class="line">      flag &#x3D; 0,</span><br><span class="line">      data &#x3D; [];         </span><br><span class="line">  for(var i &#x3D; 0; i&lt; list.length; i++) &#123;</span><br><span class="line">      var az &#x3D; &#39;&#39;;</span><br><span class="line">      for (var j &#x3D; 0; j &lt; data.length; j++) &#123;</span><br><span class="line">          if(data[j][0].row &#x3D;&#x3D; list[i].row) &#123;</span><br><span class="line">              flag &#x3D; 1;</span><br><span class="line">              az &#x3D; j;</span><br><span class="line">              break;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if(flag &#x3D;&#x3D; 1)&#123;</span><br><span class="line">          data[az].push(list[i]);</span><br><span class="line">          flag &#x3D; 0;</span><br><span class="line">      &#125; else if (flag &#x3D;&#x3D; 0) &#123;</span><br><span class="line">          var wdy &#x3D; new Array();</span><br><span class="line">          wdy.push(list[i]);</span><br><span class="line">          data.push(wdy);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过遍历按照category分类的数组，然后取出里面的sub_item子项数组，调用该方法，最后得出的数组如下：<br><img src="/images/pasted-45.png" alt="最终需要的数组"><br>先按照category分类，再按照row去分类，得出我们要的数组，最后通过3重循环，就可以得到我们想到的效果了。代码如下：</p>
+<pre><code>{
+         Array.isArray(codData)?codData.map((item,index) =&gt; (
+            &lt;Card title={item.title} type=&quot;inner&quot; id={index} key={index}&gt;
+              &lt;div&gt;
+              &lt;Row&gt;
+                {
+                  item.sub_item.map((values, index) =&gt; {
+                    return (
+                    &lt;Row&gt;
+                      {
+                        values.map((itemValues, itemIndex) =&gt; {
+                          const optionArr = itemValues.scope ? itemValues.scope.split(&quot;;&quot;) : [&quot;&quot;];
+                          return (
+                            &lt;span key={itemIndex}&gt;
+                              &lt;Col span={4} style={{ marginBottom: 8 }}&gt;
+                                &lt;div style={{ lineHeight: 2 }}&gt;
+                                  {itemValues.name} : &amp;nbsp;
+                                &lt;/div&gt;
+                              &lt;/Col&gt;
+                              &lt;Col span={4} style={{ marginBottom: 8 }}&gt;
+                                {
+                                  itemValues.type &amp;&amp; itemValues.type === &quot;下拉框&quot; ? (
+                                    &lt;Select value={itemValues.value} style={{ width: 150 }} onChange={(record) =&gt; this.changeOptionValue(record,itemValues)}&gt;
+                                      {optionArr.map(optionKey =&gt; (
+                                        &lt;Option value={optionKey}&gt;{optionKey}&lt;/Option&gt;
+                                      ))}
+                                    &lt;/Select&gt;
+                                  ) : (
+                                    &lt;Input
+                                      style={{ width: 150 }} 
+                                      onChange={(e) =&gt; this.changeInputValue(e.target.value,itemValues)}
+                                      defaultValue={itemValues.value}
+                                    /&gt;
+                                  )
+                                }
+                              &lt;/Col&gt;
+                            &lt;/span&gt;
+                          ) //截止点
+                        })
+                      }
+                    &lt;/Row&gt;//第二截止点
+                    )
+                  })
+                }
+                &lt;/Row&gt;
+              &lt;/div&gt;
+            &lt;/Card&gt;
+           )):null
+        } </code></pre><p><img src="/images/pasted-44.png" alt="最终达到的效果"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-12T08:48:00.000Z">2020-02-12</time>
                 
                 <div class="level-item">
@@ -236,7 +338,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            6
+                            7
                         </p>
                     </a>
                 </div>
@@ -260,7 +362,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            10
+                            11
                         </p>
                     </a>
                 </div>
@@ -329,7 +431,7 @@
                 <span class="level-item">React</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Springboot/">
@@ -374,7 +476,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -386,6 +488,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Js数组整理（React中用数组定位到col，row)）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T07:47:00.000Z">2020-03-26</time></div>
+                    <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Js数组整理（React中用数组定位到col，row)）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -463,25 +584,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/17/%E5%B0%86vue%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E9%80%9A%E8%BF%87%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88springboot%E4%B8%ADstatic-nginx%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="将vue项目部署到服务器并通过外网访问的两种方式（springboot中static/nginx）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-17T08:56:00.000Z">2020-01-17</time></div>
-                    <a href="/2020/01/17/%E5%B0%86vue%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E9%80%9A%E8%BF%87%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88springboot%E4%B8%ADstatic-nginx%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">将vue项目部署到服务器并通过外网访问的两种方式（springboot中static/nginx）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Springboot/">Springboot</a> / <a class="has-link-grey -link" href="/categories/Springboot/Vue/">Vue</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -499,7 +601,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -540,6 +642,13 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Canvas/">
                         <span class="tag">Canvas</span>
                         <span class="tag is-grey">1</span>
@@ -549,7 +658,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -633,6 +742,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Js数组整理（React中用数组定位到col，row)）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T07:47:00.000Z">2020-03-26</time></div>
+                    <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Js数组整理（React中用数组定位到col，row)）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo绑定个人域名以及如何发布博客">
@@ -707,25 +835,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/17/%E5%B0%86vue%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E9%80%9A%E8%BF%87%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88springboot%E4%B8%ADstatic-nginx%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="将vue项目部署到服务器并通过外网访问的两种方式（springboot中static/nginx）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-17T08:56:00.000Z">2020-01-17</time></div>
-                    <a href="/2020/01/17/%E5%B0%86vue%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E9%80%9A%E8%BF%87%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88springboot%E4%B8%ADstatic-nginx%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">将vue项目部署到服务器并通过外网访问的两种方式（springboot中static/nginx）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Springboot/">Springboot</a> / <a class="has-link-grey -link" href="/categories/Springboot/Vue/">Vue</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -743,7 +852,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -784,6 +893,13 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Canvas/">
                         <span class="tag">Canvas</span>
                         <span class="tag is-grey">1</span>
@@ -793,7 +909,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
