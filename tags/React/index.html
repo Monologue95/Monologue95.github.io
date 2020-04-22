@@ -151,6 +151,55 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/React/">React</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 94 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/">如何在react中使用websocket</a>
+            
+        </h1>
+        <div class="content">
+            <h5 id="一-如何引用websocket"><a href="#一-如何引用websocket" class="headerlink" title="一.如何引用websocket"></a>一.如何引用websocket</h5><p>npm install –save react-websocket</p>
+<h5 id="二-在组件中如何使用"><a href="#二-在组件中如何使用" class="headerlink" title="二.在组件中如何使用"></a>二.在组件中如何使用</h5><p>1.先封装一个websocket组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39;react&#39;;</span><br><span class="line">import Websocket from &#39;react-websocket&#39;;</span><br><span class="line"></span><br><span class="line">class ReactWebsocket extends React.Component &#123;</span><br><span class="line"></span><br><span class="line">  handleData(data) &#123;</span><br><span class="line">    this.props.onMessage(data)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleOpen(value)&#123;</span><br><span class="line">    this.props.onOpen(value);</span><br><span class="line">    &#x2F;&#x2F; this.refWebSocket.sendMessage(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleClose() &#123;</span><br><span class="line">    this.props.onClose()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sendMessage(message)&#123;</span><br><span class="line">    this.refWebSocket.sendMessage(message);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123;url,reconnect,debug&#125; &#x3D;this.props;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Websocket </span><br><span class="line">        url&#x3D;&#123;url&#125;</span><br><span class="line">        onMessage&#x3D;&#123;this.handleData.bind(this)&#125;</span><br><span class="line">        onOpen&#x3D;&#123;this.handleOpen.bind(this)&#125; </span><br><span class="line">        onClose&#x3D;&#123;this.handleClose.bind(this)&#125;</span><br><span class="line">        reconnect&#x3D;&#123;reconnect&#125; </span><br><span class="line">        debug&#x3D;&#123;debug&#125;</span><br><span class="line">        ref&#x3D;&#123;Websocket &#x3D;&gt; &#123;</span><br><span class="line">          this.refWebSocket &#x3D; Websocket;</span><br><span class="line">        &#125;&#125;&#x2F;&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default ReactWebsocket;</span><br></pre></td></tr></table></figure>
+<p>2.在js文件中导入组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ReactWebsocket </span><br><span class="line">  url&#x3D;&#39;ws:&#x2F;&#x2F;192.168.200.202:9999&#39; </span><br><span class="line">  onMessage&#x3D;&#123;this.onMessage&#125; &#x2F;&#x2F;接受信息的回调</span><br><span class="line">  onOpen&#x3D;&#123;this.onOpen&#125; &#x2F;&#x2F;websocket打开</span><br><span class="line">  onClose&#x3D;&#123;this.onClose&#125; &#x2F;&#x2F;websocket关闭</span><br><span class="line">  reconnect&#x3D;&#123;true&#125; </span><br><span class="line">  debug&#x3D;&#123;true&#125;</span><br><span class="line">  ref&#x3D;&#123;Websocket &#x3D;&gt; &#123;</span><br><span class="line">  this.refWebSocket &#x3D; Websocket;</span><br><span class="line">  &#125;&#125;</span><br><span class="line">&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-31T08:55:00.000Z">2020-03-31</time>
                 
                 <div class="level-item">
@@ -484,7 +533,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            9
+                            10
                         </p>
                     </a>
                 </div>
@@ -508,7 +557,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            12
+                            13
                         </p>
                     </a>
                 </div>
@@ -577,7 +626,7 @@
                 <span class="level-item">React</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Springboot/">
@@ -622,7 +671,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -634,6 +683,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在react中使用websocket">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time></div>
+                    <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在react中使用websocket</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -711,25 +779,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用canvas进行图片合成">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T06:40:00.000Z">2020-02-17</time></div>
-                    <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用canvas进行图片合成</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -740,6 +789,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -811,7 +871,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -860,6 +920,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/websocket/">
+                        <span class="tag">websocket</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -895,6 +962,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在react中使用websocket">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time></div>
+                    <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在react中使用websocket</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/31/react%E4%B8%AD%E4%BD%BF%E7%94%A8Cascader%E5%AE%8C%E6%88%90%EF%BC%88%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E8%A1%97%E9%81%93%EF%BC%89%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用Cascader完成（国省市区街）级联选择">
@@ -969,25 +1055,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用canvas进行图片合成">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T06:40:00.000Z">2020-02-17</time></div>
-                    <a href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用canvas进行图片合成</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -998,6 +1065,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -1069,7 +1147,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1118,6 +1196,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/websocket/">
+                        <span class="tag">websocket</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
