@@ -7,20 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Untitled - 冯驰的博客</title>
+<title>如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现）） - 冯驰的博客</title>
 
 
-    <meta name="description" content="Android 微信小程序 Springboot React Vue">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Untitled">
-<meta property="og:url" content="http://www.fengchi.site/Untitled/index.html">
+    <meta name="description" content="现在项目有这样一个需求,有两个平台，当一个平台已经登录好之后，另外一个平台可以自动登录上，不要重新登录了，这就要求用户信息以及token未登录的平台是要能获取到了。已知这两个平台是同一域名不同端口，所有localStorage是肯定不能共享的，所以就采用cookie的方法。代码及思路如下： 在第一个平台登录成功的时候不仅要往自己的localStorage存用户信息和token，也往cookie存入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））">
+<meta property="og:url" content="http://www.fengchi.site/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/index.html">
 <meta property="og:site_name" content="冯驰的博客">
-<meta property="og:description" content="Android 微信小程序 Springboot React Vue">
+<meta property="og:description" content="现在项目有这样一个需求,有两个平台，当一个平台已经登录好之后，另外一个平台可以自动登录上，不要重新登录了，这就要求用户信息以及token未登录的平台是要能获取到了。已知这两个平台是同一域名不同端口，所有localStorage是肯定不能共享的，所以就采用cookie的方法。代码及思路如下： 在第一个平台登录成功的时候不仅要往自己的localStorage存用户信息和token，也往cookie存入">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://www.fengchi.site/images/og_image.png">
-<meta property="article:published_time" content="2020-01-16T02:08:06.000Z">
-<meta property="article:modified_time" content="2020-01-16T02:08:06.850Z">
+<meta property="article:published_time" content="2020-04-09T01:56:00.000Z">
+<meta property="article:modified_time" content="2020-04-26T15:46:29.427Z">
 <meta property="article:author" content="冯驰">
+<meta property="article:tag" content="Cookie">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.fengchi.site/images/og_image.png">
 
@@ -80,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/avatar.png" alt="Untitled" height="28">
+                <img src="/images/avatar.png" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））" height="28">
             
             </a>
         </div>
@@ -140,13 +141,51 @@
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/React/">React</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 479 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Untitled
+                如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））
             
         </h1>
         <div class="content">
-            
+            <p>现在项目有这样一个需求,有两个平台，当一个平台已经登录好之后，另外一个平台可以自动登录上，不要重新登录了，这就要求用户信息以及token未登录的平台是要能获取到了。已知这两个平台是同一域名不同端口，所有localStorage是肯定不能共享的，所以就采用cookie的方法。代码及思路如下：</p>
+<p>在第一个平台登录成功的时候不仅要往自己的localStorage存用户信息和token，也往cookie存入用户信息和token。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setCookie(&#39;token&#39;,encodeURIComponent(response.data.token));</span><br></pre></td></tr></table></figure>
+<p> 这样就把token存到cookie中，<br> 登录另外一个系统时，就要先判断localStorage中是否有token，没有的话去cookie里获取</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(&#39;token&#39;,decodeURIComponent(getCookie(&quot;token&quot;)));</span><br></pre></td></tr></table></figure>
+
+<p> 以下是setcookie和getcookie的方法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"> export function setCookie(cName, value, expiredays) &#123;</span><br><span class="line">  const exdate &#x3D; new Date();</span><br><span class="line">  exdate.setTime(Number(exdate) + expiredays);</span><br><span class="line">  document.cookie &#x3D;</span><br><span class="line">    &#96;$&#123;cName </span><br><span class="line">    &#125;&#x3D;$&#123; </span><br><span class="line">    escape(value) </span><br><span class="line">    &#125;; path&#x3D;&#x2F;$&#123; </span><br><span class="line">    expiredays &#x3D;&#x3D; null ? &#39;&#39; : &#96;;expires&#x3D;$&#123;  exdate.toGMTString()&#125;&#96;&#125;&#96;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function getCookie(cName) &#123;</span><br><span class="line">  if (document.cookie.length &gt; 0) &#123;</span><br><span class="line">    let cStart &#x3D; document.cookie.indexOf(&#96;$&#123;cName  &#125;&#x3D;&#96;); &#x2F;&#x2F; 获取字符串的起点</span><br><span class="line">    if (cStart !&#x3D;&#x3D; -1) &#123;</span><br><span class="line">      cStart &#x3D; cStart + cName.length + 1; &#x2F;&#x2F; 获取值的起点</span><br><span class="line">      let cEnd &#x3D; document.cookie.indexOf(&#39;;&#39;, cStart); &#x2F;&#x2F; 获取结尾处</span><br><span class="line">      if (cEnd &#x3D;&#x3D;&#x3D; -1) cEnd &#x3D; document.cookie.length; &#x2F;&#x2F; 如果是最后一个，结尾就是cookie字符串的结尾</span><br><span class="line">      return decodeURI(document.cookie.substring(cStart, cEnd)); &#x2F;&#x2F; 截取字符串返回</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return &#39;&#39;;</span><br><span class="line">&#125;</span><br><span class="line">export function setCookie(cName, value, expiredays) &#123;</span><br><span class="line">  const exdate &#x3D; new Date();</span><br><span class="line">  exdate.setTime(Number(exdate) + expiredays);</span><br><span class="line">  document.cookie &#x3D;</span><br><span class="line">    &#96;$&#123;cName </span><br><span class="line">    &#125;&#x3D;$&#123; </span><br><span class="line">    escape(value) </span><br><span class="line">    &#125;; path&#x3D;&#x2F;$&#123; </span><br><span class="line">    expiredays &#x3D;&#x3D; null ? &#39;&#39; : &#96;;expires&#x3D;$&#123;  exdate.toGMTString()&#125;&#96;&#125;&#96;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function getCookie(cName) &#123;</span><br><span class="line">  if (document.cookie.length &gt; 0) &#123;</span><br><span class="line">    let cStart &#x3D; document.cookie.indexOf(&#96;$&#123;cName  &#125;&#x3D;&#96;); &#x2F;&#x2F; 获取字符串的起点</span><br><span class="line">    if (cStart !&#x3D;&#x3D; -1) &#123;</span><br><span class="line">      cStart &#x3D; cStart + cName.length + 1; &#x2F;&#x2F; 获取值的起点</span><br><span class="line">      let cEnd &#x3D; document.cookie.indexOf(&#39;;&#39;, cStart); &#x2F;&#x2F; 获取结尾处</span><br><span class="line">      if (cEnd &#x3D;&#x3D;&#x3D; -1) cEnd &#x3D; document.cookie.length; &#x2F;&#x2F; 如果是最后一个，结尾就是cookie字符串的结尾</span><br><span class="line">      return decodeURI(document.cookie.substring(cStart, cEnd)); &#x2F;&#x2F; 截取字符串返回</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return &#39;&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 当然会存在token过期的情况，这些就需要你根据实际项目需求去改了。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Cookie/" rel="tag">Cookie</a>
+                </div>
+            </div>
         </div>
         
         
@@ -187,6 +226,27 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">如何在react中使用websocket</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/31/react%E4%B8%AD%E4%BD%BF%E7%94%A8Cascader%E5%AE%8C%E6%88%90%EF%BC%88%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E8%A1%97%E9%81%93%EF%BC%89%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9/">
+                <span class="level-item">react中使用Cascader完成（国省市区街）级联选择</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
 
 
 <div class="card">
@@ -195,8 +255,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://www.fengchi.site/Untitled/index.html';
-        this.page.identifier = 'Untitled/index.html';
+        this.page.url = 'http://www.fengchi.site/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/';
+        this.page.identifier = '2020/04/09/如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -969,7 +1029,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/avatar.png" alt="Untitled" height="28">
+                    <img src="/images/avatar.png" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））" height="28">
                 
                 </a>
                 <p class="is-size-7">

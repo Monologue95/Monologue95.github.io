@@ -201,6 +201,61 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/React/">React</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 479 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/">如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））</a>
+            
+        </h1>
+        <div class="content">
+            <p>现在项目有这样一个需求,有两个平台，当一个平台已经登录好之后，另外一个平台可以自动登录上，不要重新登录了，这就要求用户信息以及token未登录的平台是要能获取到了。已知这两个平台是同一域名不同端口，所有localStorage是肯定不能共享的，所以就采用cookie的方法。代码及思路如下：</p>
+<p>在第一个平台登录成功的时候不仅要往自己的localStorage存用户信息和token，也往cookie存入用户信息和token。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setCookie(&#39;token&#39;,encodeURIComponent(response.data.token));</span><br></pre></td></tr></table></figure>
+<p> 这样就把token存到cookie中，<br> 登录另外一个系统时，就要先判断localStorage中是否有token，没有的话去cookie里获取</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(&#39;token&#39;,decodeURIComponent(getCookie(&quot;token&quot;)));</span><br></pre></td></tr></table></figure>
+
+<p> 以下是setcookie和getcookie的方法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"> export function setCookie(cName, value, expiredays) &#123;</span><br><span class="line">  const exdate &#x3D; new Date();</span><br><span class="line">  exdate.setTime(Number(exdate) + expiredays);</span><br><span class="line">  document.cookie &#x3D;</span><br><span class="line">    &#96;$&#123;cName </span><br><span class="line">    &#125;&#x3D;$&#123; </span><br><span class="line">    escape(value) </span><br><span class="line">    &#125;; path&#x3D;&#x2F;$&#123; </span><br><span class="line">    expiredays &#x3D;&#x3D; null ? &#39;&#39; : &#96;;expires&#x3D;$&#123;  exdate.toGMTString()&#125;&#96;&#125;&#96;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function getCookie(cName) &#123;</span><br><span class="line">  if (document.cookie.length &gt; 0) &#123;</span><br><span class="line">    let cStart &#x3D; document.cookie.indexOf(&#96;$&#123;cName  &#125;&#x3D;&#96;); &#x2F;&#x2F; 获取字符串的起点</span><br><span class="line">    if (cStart !&#x3D;&#x3D; -1) &#123;</span><br><span class="line">      cStart &#x3D; cStart + cName.length + 1; &#x2F;&#x2F; 获取值的起点</span><br><span class="line">      let cEnd &#x3D; document.cookie.indexOf(&#39;;&#39;, cStart); &#x2F;&#x2F; 获取结尾处</span><br><span class="line">      if (cEnd &#x3D;&#x3D;&#x3D; -1) cEnd &#x3D; document.cookie.length; &#x2F;&#x2F; 如果是最后一个，结尾就是cookie字符串的结尾</span><br><span class="line">      return decodeURI(document.cookie.substring(cStart, cEnd)); &#x2F;&#x2F; 截取字符串返回</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return &#39;&#39;;</span><br><span class="line">&#125;</span><br><span class="line">export function setCookie(cName, value, expiredays) &#123;</span><br><span class="line">  const exdate &#x3D; new Date();</span><br><span class="line">  exdate.setTime(Number(exdate) + expiredays);</span><br><span class="line">  document.cookie &#x3D;</span><br><span class="line">    &#96;$&#123;cName </span><br><span class="line">    &#125;&#x3D;$&#123; </span><br><span class="line">    escape(value) </span><br><span class="line">    &#125;; path&#x3D;&#x2F;$&#123; </span><br><span class="line">    expiredays &#x3D;&#x3D; null ? &#39;&#39; : &#96;;expires&#x3D;$&#123;  exdate.toGMTString()&#125;&#96;&#125;&#96;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function getCookie(cName) &#123;</span><br><span class="line">  if (document.cookie.length &gt; 0) &#123;</span><br><span class="line">    let cStart &#x3D; document.cookie.indexOf(&#96;$&#123;cName  &#125;&#x3D;&#96;); &#x2F;&#x2F; 获取字符串的起点</span><br><span class="line">    if (cStart !&#x3D;&#x3D; -1) &#123;</span><br><span class="line">      cStart &#x3D; cStart + cName.length + 1; &#x2F;&#x2F; 获取值的起点</span><br><span class="line">      let cEnd &#x3D; document.cookie.indexOf(&#39;;&#39;, cStart); &#x2F;&#x2F; 获取结尾处</span><br><span class="line">      if (cEnd &#x3D;&#x3D;&#x3D; -1) cEnd &#x3D; document.cookie.length; &#x2F;&#x2F; 如果是最后一个，结尾就是cookie字符串的结尾</span><br><span class="line">      return decodeURI(document.cookie.substring(cStart, cEnd)); &#x2F;&#x2F; 截取字符串返回</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return &#39;&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 当然会存在token过期的情况，这些就需要你根据实际项目需求去改了。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-31T08:55:00.000Z">2020-03-31</time>
                 
                 <div class="level-item">
@@ -445,7 +500,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            10
+                            11
                         </p>
                     </a>
                 </div>
@@ -469,7 +524,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            13
+                            14
                         </p>
                     </a>
                 </div>
@@ -538,7 +593,7 @@
                 <span class="level-item">React</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Springboot/">
@@ -583,7 +638,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -608,6 +663,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time></div>
                     <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在react中使用websocket</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time></div>
+                    <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/React/">React</a>
                     </p>
@@ -672,25 +746,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo绑定个人域名以及如何发布博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T05:44:00.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo绑定个人域名以及如何发布博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/hexo/">hexo</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -708,7 +763,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -776,6 +831,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Cascader/">
                         <span class="tag">Cascader</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Cookie/">
+                        <span class="tag">Cookie</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -893,6 +955,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time></div>
+                    <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/31/react%E4%B8%AD%E4%BD%BF%E7%94%A8Cascader%E5%AE%8C%E6%88%90%EF%BC%88%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E8%A1%97%E9%81%93%EF%BC%89%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用Cascader完成（国省市区街）级联选择">
@@ -948,25 +1029,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo绑定个人域名以及如何发布博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T05:44:00.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo绑定个人域名以及如何发布博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/hexo/">hexo</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -984,7 +1046,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1052,6 +1114,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Cascader/">
                         <span class="tag">Cascader</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Cookie/">
+                        <span class="tag">Cookie</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
