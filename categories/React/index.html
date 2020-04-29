@@ -152,6 +152,116 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-29T06:55:00.000Z">2020-04-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/React/">React</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 517 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/">react中使用fetch进行文件上传并与后台验证md5</a>
+            
+        </h1>
+        <div class="content">
+            <p>项目有需要文件上传的功能，所以想用fetch来实现。样式方面用的是antd的upload组件，但网络请求没有用它本身的，因为请求数据方面还是得根据后台实际需求来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload &#123;...props&#125;&gt;</span><br><span class="line">   &lt;Button type&#x3D;&quot;primary&quot;&gt;</span><br><span class="line">     &lt;Icon type&#x3D;&quot;upload&quot; &#x2F;&gt; 上传文件</span><br><span class="line">   &lt;&#x2F;Button&gt;</span><br><span class="line">&lt;&#x2F;Upload&gt;</span><br></pre></td></tr></table></figure>
+<p>在upload的beforeUpload获取file实例，然后通过fetch进行文件上传，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">const props &#x3D; &#123;</span><br><span class="line">      onRemove: file &#x3D;&gt; &#123;</span><br><span class="line">        this.setState(state &#x3D;&gt; &#123;</span><br><span class="line">          const index &#x3D; state.fileList.indexOf(file);</span><br><span class="line">          const newFileList &#x3D; state.fileList.slice();</span><br><span class="line">          newFileList.splice(index, 1);</span><br><span class="line">          return &#123;</span><br><span class="line">            fileList: newFileList,</span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      beforeUpload: (file,fileList) &#x3D;&gt; &#123;</span><br><span class="line">        const formData &#x3D; new FormData();</span><br><span class="line">        formData.append(&#39;file&#39;, file);</span><br><span class="line">        &#x2F;&#x2F; You can use any AJAX library you like</span><br><span class="line">        const url&#x3D; &#39;http:&#x2F;&#x2F;192.168.200.204:9000&#x2F;eip-service-oss&#x2F;minio&#x2F;file&#39;</span><br><span class="line">        fetch(url, &#123;</span><br><span class="line">          method: &#39;POST&#39;,</span><br><span class="line">          body: formData,</span><br><span class="line">          headers: &#123;</span><br><span class="line">            &#x2F;&#x2F; &quot;Content-Type&quot;: &quot;multipart&#x2F;form-data&quot;,</span><br><span class="line">            &quot;Authorization&quot;: localStorage.getItem(&#39;token&#39;),</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;).then(response &#x3D;&gt; response.json())</span><br><span class="line">        .then(response &#x3D;&gt; &#123;</span><br><span class="line">          if(response.code&#x3D;&#x3D;200)&#123;</span><br><span class="line">            message.success(&#96;$&#123;response.data.originFileName&#125; 文件上传成功&#96;);</span><br><span class="line">            Object.assign(file,&#123;url:response.data.url&#125;,&#123;fileName:response.data.fileName&#125;,&#123;name1:response.data.originFileName&#125;)</span><br><span class="line">            this.setState(state &#x3D;&gt; (&#123;</span><br><span class="line">              fileList: [...state.fileList, file],</span><br><span class="line">            &#125;));</span><br><span class="line">          &#125;else&#123;</span><br><span class="line">            message.error(&#96;$&#123;response.data.originFileName&#125; 文件上传失败&#96;); </span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(error &#x3D;&gt; console.log(error));</span><br><span class="line">         return false;</span><br><span class="line">      &#125;,</span><br><span class="line">      fileList,</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>验证md5是在react里面通过spark-md5生成文件的md5值，与传到服务器上的文件的md5值进行比对。</p>
+<pre><code>function get_filemd5sum(ofile,fileList) {
+        var file = ofile;
+        var tmp_md5;
+        var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+            // file = this.files[0],
+            chunkSize = 8097152, // Read in chunks of 2MB
+            chunks = Math.ceil(file.size / chunkSize),
+            currentChunk = 0,
+            spark = new SparkMD5.ArrayBuffer(),
+            fileReader = new FileReader();
+
+        fileReader.onload = function (e) {
+            spark.append(e.target.result); // Append array buffer
+            currentChunk++;
+            var md5_progress = Math.floor((currentChunk / chunks) * 100);
+            console.log(file.name + &quot;  正在处理，请稍等,&quot; + &quot;已完成&quot; + md5_progress + &quot;%&quot;);
+            if (currentChunk &lt; chunks) {
+                console.log(&quot;1&quot;,&quot;1&quot;)
+                loadNext();
+            } else {
+                tmp_md5 = spark.end();
+                console.log(tmp_md5)
+                console.log(file.name + &quot;的MD5值是：&quot; + tmp_md5)
+                const formdata = new FormData();
+                formdata.append(&apos;file&apos;, file);
+                console.log(&quot;formData-------&quot;,formdata)
+
+                const url = &quot;/file/upload?file_md5=&quot;+tmp_md5;
+                //const url = &quot;http://192.168.200.204:9000/eip-service-oss/minio/file&quot;;
+                //const url = &quot;http://192.168.200.202:9999/file/upload&quot;;
+                fetch(url, {
+                    method: &apos;POST&apos;,
+                    body: formdata,
+                    headers: {
+                        // &quot;Content-Type&quot;: &quot;multipart/form-data&quot;,
+                        &quot;Authorization&quot;: localStorage.getItem(&apos;token&apos;),
+                    }
+                }).then(response =&gt; response.json())
+                .then(data =&gt; {
+                    if(data.status==200){
+                        message.success(`${file.name} 文件上传成功`);
+                        handleSetFileName(data.message,fileList)         
+                    }else{
+                        message.error(`${file.name} 文件上传失败`); 
+                    }
+                })
+                .catch(error =&gt; console.log(error));
+            }
+        };
+        fileReader.onerror = function () {
+            console.warn(&apos;oops, something went wrong.&apos;);
+        };
+        function loadNext() {
+            var start = currentChunk * chunkSize,
+                end = ((start + chunkSize) &gt;= file.size) ? file.size : start + chunkSize;
+            fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+        }
+        loadNext();
+    }</code></pre><p>至此，文件上传并验证md5的功能就全部实现了。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time>
                 
                 <div class="level-item">
@@ -500,7 +610,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -524,7 +634,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            14
+                            17
                         </p>
                     </a>
                 </div>
@@ -593,7 +703,7 @@
                 <span class="level-item">React</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Springboot/">
@@ -638,7 +748,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Fetch/" style="font-size: 10px;">Fetch</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/upload/" style="font-size: 10px;">upload</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -650,6 +760,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用fetch进行文件上传并与后台验证md5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:55:00.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用fetch进行文件上传并与后台验证md5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -727,25 +856,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Js数组整理（React中用数组定位到col，row)）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T07:47:00.000Z">2020-03-26</time></div>
-                    <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Js数组整理（React中用数组定位到col，row)）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -763,7 +873,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -843,6 +953,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Fetch/">
+                        <span class="tag">Fetch</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
                         <span class="tag is-grey">6</span>
@@ -892,8 +1009,22 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/md5/">
+                        <span class="tag">md5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/upload/">
+                        <span class="tag">upload</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -936,6 +1067,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用fetch进行文件上传并与后台验证md5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:55:00.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用fetch进行文件上传并与后台验证md5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在react中使用websocket">
@@ -1010,25 +1160,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Js数组整理（React中用数组定位到col，row)）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T07:47:00.000Z">2020-03-26</time></div>
-                    <a href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Js数组整理（React中用数组定位到col，row)）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1046,7 +1177,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1126,6 +1257,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Fetch/">
+                        <span class="tag">Fetch</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
                         <span class="tag is-grey">6</span>
@@ -1175,8 +1313,22 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/md5/">
+                        <span class="tag">md5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/upload/">
+                        <span class="tag">upload</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
