@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: android - 冯驰的博客</title>
+<title>标签: Android - 冯驰的博客</title>
 
 
     <meta name="description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:type" content="website">
 <meta property="og:title" content="冯驰的博客">
-<meta property="og:url" content="http://www.fengchi.site/tags/android/index.html">
+<meta property="og:url" content="http://www.fengchi.site/tags/Android/index.html">
 <meta property="og:site_name" content="冯驰的博客">
 <meta property="og:description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:locale" content="zh_CN">
@@ -138,7 +138,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">android</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Android</a></li>
         </ul>
         </nav>
     </div>
@@ -151,17 +151,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-17T08:31:00.000Z">2020-01-17</time>
+                <time class="level-item has-text-grey" datetime="2020-08-10T01:59:00.000Z">2020-08-10</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">android</a>
+                <a class="has-link-grey -link" href="/categories/Android/">Android</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 143 个字)
+                    3 分钟 读完 (大约 414 个字)
                 </span>
                 
                 
@@ -170,18 +170,15 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/01/17/%E4%BD%BF%E7%94%A8volley%E8%8E%B7%E5%8F%96HTTP%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%93%8D%E5%BA%94%E5%A4%B4/">使用volley获取HTTP网络请求接口的响应头</a>
+                <a class="has-link-black-ter" href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/">android选择文件后返回路径无法正常读取文件</a>
             
         </h1>
         <div class="content">
-            <p>一丶解决这个问题的时候先得知道什么响应头，与之对应的还有请求头</p>
-<p><img src="/images/pasted-10.png" alt="upload successful"></p>
-<p>二.找到volley内部访问请求返回的response，并获取响应头信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected Response&lt;String&gt; parseNetworkResponse(NetworkResponse response) &#123;</span><br><span class="line">  String parsed;</span><br><span class="line">  try &#123;</span><br><span class="line">      parsed &#x3D; new String(response.data, &quot;UTF-8&quot;);</span><br><span class="line">      LogUtil.e(&quot;Header&quot;, response.headers.toString());</span><br><span class="line">  &#125; catch (UnsupportedEncodingException var4) &#123;</span><br><span class="line">      parsed &#x3D; new String(response.data);</span><br><span class="line">  &#125;</span><br><span class="line">  return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>volley内部返回的response可以获取到Header信息，由于header信息是map类型的，所以要获取某个key的值，则通过</p>
-<p>response.headers.get(“key”)来获取。</p>
-
+            <p>原先之前用的是通过uri然后通过系统的getPath获取路径，后来发现返回的路径获取不到文件了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uri uri &#x3D; data.getData();</span><br><span class="line">String path &#x3D; getPath(this, uri);</span><br></pre></td></tr></table></figure>
+<p>后来查了一下，原来在4.4之后api对uri有了一个调整，所以获取路径的代码也得做调整，重新写了一个获取路径的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uri uri &#x3D; data.getData();</span><br><span class="line">String path &#x3D; getPathByUri(this, uri);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;从Uri获取文件绝对路径</span><br><span class="line">   @SuppressLint(&quot;NewApi&quot;)</span><br><span class="line">   public static String getPathByUri4kitkat(final Context context, final Uri uri) &#123;</span><br><span class="line">       final boolean isKitKat &#x3D; Build.VERSION.SDK_INT &gt;&#x3D; Build.VERSION_CODES.KITKAT;</span><br><span class="line">       if (isKitKat &amp;&amp; DocumentsContract.isDocumentUri(context, uri)) &#123;</span><br><span class="line">           if (isExternalStorageDocument(uri)) &#123;&#x2F;&#x2F; ExternalStorageProvider</span><br><span class="line">               final String docId &#x3D; DocumentsContract.getDocumentId(uri);</span><br><span class="line">               final String[] split &#x3D; docId.split(&quot;:&quot;);</span><br><span class="line">               final String type &#x3D; split[0];</span><br><span class="line">               if (&quot;primary&quot;.equalsIgnoreCase(type)) &#123;</span><br><span class="line">                   return Environment.getExternalStorageDirectory() + &quot;&#x2F;&quot; + split[1];</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; else if (isDownloadsDocument(uri)) &#123;&#x2F;&#x2F; DownloadsProvider</span><br><span class="line">               final String id &#x3D; DocumentsContract.getDocumentId(uri);</span><br><span class="line">               final Uri contentUri &#x3D; ContentUris.withAppendedId(Uri.parse(&quot;content:&#x2F;&#x2F;downloads&#x2F;public_downloads&quot;),</span><br><span class="line">                       Long.valueOf(id));</span><br><span class="line">               return getDataColumn(context, contentUri, null, null);</span><br><span class="line">           &#125; else if (isMediaDocument(uri)) &#123;&#x2F;&#x2F; MediaProvider</span><br><span class="line">               final String docId &#x3D; DocumentsContract.getDocumentId(uri);</span><br><span class="line">               final String[] split &#x3D; docId.split(&quot;:&quot;);</span><br><span class="line">               final String type &#x3D; split[0];</span><br><span class="line">               Uri contentUri &#x3D; null;</span><br><span class="line">               if (&quot;image&quot;.equals(type)) &#123;</span><br><span class="line">                   contentUri &#x3D; MediaStore.Images.Media.EXTERNAL_CONTENT_URI;</span><br><span class="line">               &#125; else if (&quot;video&quot;.equals(type)) &#123;</span><br><span class="line">                   contentUri &#x3D; MediaStore.Video.Media.EXTERNAL_CONTENT_URI;</span><br><span class="line">               &#125; else if (&quot;audio&quot;.equals(type)) &#123;</span><br><span class="line">                   contentUri &#x3D; MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;</span><br><span class="line">               &#125;</span><br><span class="line">               final String selection &#x3D; &quot;_id&#x3D;?&quot;;</span><br><span class="line">               final String[] selectionArgs &#x3D; new String[] &#123; split[1] &#125;;</span><br><span class="line">               return getDataColumn(context, contentUri, selection, selectionArgs);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; else if (&quot;content&quot;.equalsIgnoreCase(uri.getScheme())) &#123;&#x2F;&#x2F; MediaStore</span><br><span class="line">           &#x2F;&#x2F; (and</span><br><span class="line">           &#x2F;&#x2F; general)</span><br><span class="line">           return getDataColumn(context, uri, null, null);</span><br><span class="line">       &#125; else if (&quot;file&quot;.equalsIgnoreCase(uri.getScheme())) &#123;&#x2F;&#x2F; File</span><br><span class="line">           return uri.getPath();</span><br><span class="line">       &#125;</span><br><span class="line">       return null;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) &#123;</span><br><span class="line">       Cursor cursor &#x3D; null;</span><br><span class="line">       final String column &#x3D; &quot;_data&quot;;</span><br><span class="line">       final String[] projection &#x3D; &#123; column &#125;;</span><br><span class="line">       try &#123;</span><br><span class="line">           try&#123;</span><br><span class="line">               cursor &#x3D; context.getContentResolver().query(uri, projection, selection, selectionArgs, null);</span><br><span class="line">           &#125;catch (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">           if (cursor !&#x3D; null &amp;&amp; cursor.moveToFirst()) &#123;</span><br><span class="line">               final int column_index &#x3D; cursor.getColumnIndexOrThrow(column);</span><br><span class="line">               return cursor.getString(column_index);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; finally &#123;</span><br><span class="line">           if (cursor !&#x3D; null)</span><br><span class="line">               cursor.close();</span><br><span class="line">       &#125;</span><br><span class="line">       return null;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static boolean isExternalStorageDocument(Uri uri) &#123;</span><br><span class="line">       return &quot;com.android.externalstorage.documents&quot;.equals(uri.getAuthority());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static boolean isDownloadsDocument(Uri uri) &#123;</span><br><span class="line">       return &quot;com.android.providers.downloads.documents&quot;.equals(uri.getAuthority());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static boolean isMediaDocument(Uri uri) &#123;</span><br><span class="line">       return &quot;com.android.providers.media.documents&quot;.equals(uri.getAuthority());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -241,7 +238,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            13
+                            14
                         </p>
                     </a>
                 </div>
@@ -265,7 +262,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            19
+                            22
                         </p>
                     </a>
                 </div>
@@ -334,7 +331,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/React/">
@@ -387,7 +384,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Fetch/" style="font-size: 10px;">Fetch</a> <a href="/tags/Locale/" style="font-size: 10px;">Locale</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/upload/" style="font-size: 10px;">upload</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Fetch/" style="font-size: 10px;">Fetch</a> <a href="/tags/Locale/" style="font-size: 10px;">Locale</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/upload/" style="font-size: 10px;">upload</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -399,6 +396,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android选择文件后返回路径无法正常读取文件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-08-10T01:59:00.000Z">2020-08-10</time></div>
+                    <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android选择文件后返回路径无法正常读取文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -476,25 +492,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/31/react%E4%B8%AD%E4%BD%BF%E7%94%A8Cascader%E5%AE%8C%E6%88%90%EF%BC%88%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E8%A1%97%E9%81%93%EF%BC%89%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用Cascader完成（国省市区街）级联选择">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-31T08:55:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/react%E4%B8%AD%E4%BD%BF%E7%94%A8Cascader%E5%AE%8C%E6%88%90%EF%BC%88%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E8%A1%97%E9%81%93%EF%BC%89%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用Cascader完成（国省市区街）级联选择</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -512,7 +509,7 @@
                     <span class="level-item">八月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -573,6 +570,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Array/">
@@ -645,6 +649,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/file/">
+                        <span class="tag">file</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/github/">
                         <span class="tag">github</span>
                         <span class="tag is-grey">1</span>
@@ -682,6 +693,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/upload/">
                         <span class="tag">upload</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/uri/">
+                        <span class="tag">uri</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -731,6 +749,25 @@
         
         <article class="media">
             
+            <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android选择文件后返回路径无法正常读取文件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-08-10T01:59:00.000Z">2020-08-10</time></div>
+                    <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android选择文件后返回路径无法正常读取文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/08/05/Android%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E8-0%E4%BB%A5%E4%B8%8A%EF%BC%89/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Android多语言切换（适用于8.0以上）">
@@ -805,25 +842,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/31/react%E4%B8%AD%E4%BD%BF%E7%94%A8Cascader%E5%AE%8C%E6%88%90%EF%BC%88%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E8%A1%97%E9%81%93%EF%BC%89%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用Cascader完成（国省市区街）级联选择">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-31T08:55:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/react%E4%B8%AD%E4%BD%BF%E7%94%A8Cascader%E5%AE%8C%E6%88%90%EF%BC%88%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E8%A1%97%E9%81%93%EF%BC%89%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用Cascader完成（国省市区街）级联选择</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -841,7 +859,7 @@
                     <span class="level-item">八月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -902,6 +920,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Array/">
@@ -974,6 +999,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/file/">
+                        <span class="tag">file</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/github/">
                         <span class="tag">github</span>
                         <span class="tag is-grey">1</span>
@@ -1011,6 +1043,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/upload/">
                         <span class="tag">upload</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/uri/">
+                        <span class="tag">uri</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
