@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分类: Android - 冯驰的博客</title>
+<title>分类: android - 冯驰的博客</title>
 
 
     <meta name="description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:type" content="website">
 <meta property="og:title" content="冯驰的博客">
-<meta property="og:url" content="http://www.fengchi.site/categories/Android/index.html">
+<meta property="og:url" content="http://www.fengchi.site/categories/android/index.html">
 <meta property="og:site_name" content="冯驰的博客">
 <meta property="og:description" content="Android 微信小程序 Springboot React Vue">
 <meta property="og:locale" content="zh_CN">
@@ -139,7 +139,7 @@
         <ul>
             <li><a href="/categories">分类</a></li>
             
-            <li class="is-active"><a href="#" aria-current="page">Android</a></li>
+            <li class="is-active"><a href="#" aria-current="page">android</a></li>
         </ul>
         </nav>
     </div>
@@ -152,17 +152,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-08-10T01:59:00.000Z">2020-08-10</time>
+                <time class="level-item has-text-grey" datetime="2020-09-30T06:48:00.000Z">2020-09-30</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                <a class="has-link-grey -link" href="/categories/android/">android</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 428 个字)
+                    2 分钟 读完 (大约 249 个字)
                 </span>
                 
                 
@@ -171,15 +171,14 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/">android选择文件后返回路径无法正常读取文件</a>
+                <a class="has-link-black-ter" href="/2020/09/30/android/">android10关于文件读取不到的解决办法</a>
             
         </h1>
         <div class="content">
-            <p>原先之前用的是通过uri然后通过系统的getPath获取路径，后来发现返回的路径获取不到文件了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uri uri &#x3D; data.getData();</span><br><span class="line">String path &#x3D; getPath(this, uri);</span><br></pre></td></tr></table></figure>
-<p>后来查了一下，原来在4.4之后api对uri有了一个调整，所以获取路径的代码也得做调整，重新写了一个获取路径的方法，这样子就可以正常读取文件了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uri uri &#x3D; data.getData();</span><br><span class="line">String path &#x3D; getPathByUri(this, uri);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;从Uri获取文件绝对路径</span><br><span class="line">   @SuppressLint(&quot;NewApi&quot;)</span><br><span class="line">   public static String getPathByUri4kitkat(final Context context, final Uri uri) &#123;</span><br><span class="line">       final boolean isKitKat &#x3D; Build.VERSION.SDK_INT &gt;&#x3D; Build.VERSION_CODES.KITKAT;</span><br><span class="line">       if (isKitKat &amp;&amp; DocumentsContract.isDocumentUri(context, uri)) &#123;</span><br><span class="line">           if (isExternalStorageDocument(uri)) &#123;&#x2F;&#x2F; ExternalStorageProvider</span><br><span class="line">               final String docId &#x3D; DocumentsContract.getDocumentId(uri);</span><br><span class="line">               final String[] split &#x3D; docId.split(&quot;:&quot;);</span><br><span class="line">               final String type &#x3D; split[0];</span><br><span class="line">               if (&quot;primary&quot;.equalsIgnoreCase(type)) &#123;</span><br><span class="line">                   return Environment.getExternalStorageDirectory() + &quot;&#x2F;&quot; + split[1];</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; else if (isDownloadsDocument(uri)) &#123;&#x2F;&#x2F; DownloadsProvider</span><br><span class="line">               final String id &#x3D; DocumentsContract.getDocumentId(uri);</span><br><span class="line">               final Uri contentUri &#x3D; ContentUris.withAppendedId(Uri.parse(&quot;content:&#x2F;&#x2F;downloads&#x2F;public_downloads&quot;),</span><br><span class="line">                       Long.valueOf(id));</span><br><span class="line">               return getDataColumn(context, contentUri, null, null);</span><br><span class="line">           &#125; else if (isMediaDocument(uri)) &#123;&#x2F;&#x2F; MediaProvider</span><br><span class="line">               final String docId &#x3D; DocumentsContract.getDocumentId(uri);</span><br><span class="line">               final String[] split &#x3D; docId.split(&quot;:&quot;);</span><br><span class="line">               final String type &#x3D; split[0];</span><br><span class="line">               Uri contentUri &#x3D; null;</span><br><span class="line">               if (&quot;image&quot;.equals(type)) &#123;</span><br><span class="line">                   contentUri &#x3D; MediaStore.Images.Media.EXTERNAL_CONTENT_URI;</span><br><span class="line">               &#125; else if (&quot;video&quot;.equals(type)) &#123;</span><br><span class="line">                   contentUri &#x3D; MediaStore.Video.Media.EXTERNAL_CONTENT_URI;</span><br><span class="line">               &#125; else if (&quot;audio&quot;.equals(type)) &#123;</span><br><span class="line">                   contentUri &#x3D; MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;</span><br><span class="line">               &#125;</span><br><span class="line">               final String selection &#x3D; &quot;_id&#x3D;?&quot;;</span><br><span class="line">               final String[] selectionArgs &#x3D; new String[] &#123; split[1] &#125;;</span><br><span class="line">               return getDataColumn(context, contentUri, selection, selectionArgs);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; else if (&quot;content&quot;.equalsIgnoreCase(uri.getScheme())) &#123;&#x2F;&#x2F; MediaStore</span><br><span class="line">           &#x2F;&#x2F; (and</span><br><span class="line">           &#x2F;&#x2F; general)</span><br><span class="line">           return getDataColumn(context, uri, null, null);</span><br><span class="line">       &#125; else if (&quot;file&quot;.equalsIgnoreCase(uri.getScheme())) &#123;&#x2F;&#x2F; File</span><br><span class="line">           return uri.getPath();</span><br><span class="line">       &#125;</span><br><span class="line">       return null;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) &#123;</span><br><span class="line">       Cursor cursor &#x3D; null;</span><br><span class="line">       final String column &#x3D; &quot;_data&quot;;</span><br><span class="line">       final String[] projection &#x3D; &#123; column &#125;;</span><br><span class="line">       try &#123;</span><br><span class="line">           try&#123;</span><br><span class="line">               cursor &#x3D; context.getContentResolver().query(uri, projection, selection, selectionArgs, null);</span><br><span class="line">           &#125;catch (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">           if (cursor !&#x3D; null &amp;&amp; cursor.moveToFirst()) &#123;</span><br><span class="line">               final int column_index &#x3D; cursor.getColumnIndexOrThrow(column);</span><br><span class="line">               return cursor.getString(column_index);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; finally &#123;</span><br><span class="line">           if (cursor !&#x3D; null)</span><br><span class="line">               cursor.close();</span><br><span class="line">       &#125;</span><br><span class="line">       return null;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static boolean isExternalStorageDocument(Uri uri) &#123;</span><br><span class="line">       return &quot;com.android.externalstorage.documents&quot;.equals(uri.getAuthority());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static boolean isDownloadsDocument(Uri uri) &#123;</span><br><span class="line">       return &quot;com.android.providers.downloads.documents&quot;.equals(uri.getAuthority());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static boolean isMediaDocument(Uri uri) &#123;</span><br><span class="line">       return &quot;com.android.providers.media.documents&quot;.equals(uri.getAuthority());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+            <p>最近项目中有人提出来说拍照没法拍，我的第一反应是之前项目一直是好的，按道理不是硬件代码的问题。结合了自己昨天刚把测试机升到了android10，所以箭头指向了android版本。于是用了测试机试了一下，果不其然也报错了。错误信息是 java.io.FileNotFoundException。就是找不到该文件了，于是翻阅资料发现，在AndroidManifest.xml 里的application中添加 android:requestLegacyExternalStorage=“true” 临时解决。可以兼容到Android 11。或者targetsdk 降低到29以下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;application  </span><br><span class="line">  android:requestLegacyExternalStorage&#x3D;&quot;true&quot;</span><br><span class="line">&gt;</span><br><span class="line">&#96;&#96;&#96;    </span><br><span class="line">还有类似还有一个问题，就是我申请了读写权限，但是就是指向不到文件，所以就一直没办法拍照。后来研究发现，是因为还需要再手动给一次权限。</span><br></pre></td></tr></table></figure>
+<p>if (ActivityCompat.checkSelfPermission(WaitActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {       ActivityCompat.requestPermissions(WaitActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);<br>}<br>```</p>
+
         </div>
         
         
@@ -201,17 +200,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-08-05T06:18:00.000Z">2020-08-05</time>
+                <time class="level-item has-text-grey" datetime="2020-01-17T08:31:00.000Z">2020-01-17</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                <a class="has-link-grey -link" href="/categories/android/">android</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 748 个字)
+                    1 分钟 读完 (大约 143 个字)
                 </span>
                 
                 
@@ -220,22 +219,17 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/08/05/Android%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E8-0%E4%BB%A5%E4%B8%8A%EF%BC%89/">Android多语言切换（适用于8.0以上）</a>
+                <a class="has-link-black-ter" href="/2020/01/17/%E4%BD%BF%E7%94%A8volley%E8%8E%B7%E5%8F%96HTTP%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%93%8D%E5%BA%94%E5%A4%B4/">使用volley获取HTTP网络请求接口的响应头</a>
             
         </h1>
         <div class="content">
-            <p>首先关于语言配置的文件就不赘述了，在setting里面新建resoure资源就可以了。下面主要讲的是如何针对于8.0版本以上的系统做适配，因为8.0对多语言的改动还是蛮大的。</p>
-<h5 id="一-8-0之前如何写多语言"><a href="#一-8-0之前如何写多语言" class="headerlink" title="一.8.0之前如何写多语言"></a>一.8.0之前如何写多语言</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">  Resources resources &#x3D; context.getApplicationContext().getResources();</span><br><span class="line">  DisplayMetrics dm &#x3D; resources.getDisplayMetrics();</span><br><span class="line">  Configuration config &#x3D; resources.getConfiguration();</span><br><span class="line">  Locale locale &#x3D; getSetLanguageLocale(context);&#x2F;&#x2F;获取sp里面保存的语言</span><br><span class="line">  if (Build.VERSION.SDK_INT &gt;&#x3D; Build.VERSION_CODES.JELLY_BEAN_MR1) &#123;</span><br><span class="line">    config.setLocale(locale);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    config.locale &#x3D; locale;</span><br><span class="line">  &#125;</span><br><span class="line">  resources.updateConfiguration(config, dm);</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">     * 获取选择的语言设置</span><br><span class="line">     *</span><br><span class="line">     * @param context</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private static Locale getSetLanguageLocale(Context context) &#123;</span><br><span class="line">        switch (Store.getLanguageType()) &#123;</span><br><span class="line">            case &quot;null&quot;:&#x2F;&#x2F;跟随系统</span><br><span class="line">                return getSystemLocale();</span><br><span class="line">            case &quot;zh&quot;:&#x2F;&#x2F;英语</span><br><span class="line">                return Locale.CHINESE;</span><br><span class="line">            case &quot;en&quot;:&#x2F;&#x2F;汉语</span><br><span class="line">                return Locale.ENGLISH;</span><br><span class="line">            default:&#x2F;&#x2F;默认 汉语</span><br><span class="line">                return Locale.CHINESE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+            <p>一丶解决这个问题的时候先得知道什么响应头，与之对应的还有请求头</p>
+<p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p>二.找到volley内部访问请求返回的response，并获取响应头信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected Response&lt;String&gt; parseNetworkResponse(NetworkResponse response) &#123;</span><br><span class="line">  String parsed;</span><br><span class="line">  try &#123;</span><br><span class="line">      parsed &#x3D; new String(response.data, &quot;UTF-8&quot;);</span><br><span class="line">      LogUtil.e(&quot;Header&quot;, response.headers.toString());</span><br><span class="line">  &#125; catch (UnsupportedEncodingException var4) &#123;</span><br><span class="line">      parsed &#x3D; new String(response.data);</span><br><span class="line">  &#125;</span><br><span class="line">  return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 本地存储语言</span><br><span class="line"> *</span><br><span class="line"> * SharedPrefences操作方法</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">public class Store &#123;</span><br><span class="line">    public static String LANGUAGE_KEY &#x3D; &quot;language&quot;;</span><br><span class="line">    public static String LANGUAGE_TYPE_CHINESE &#x3D; &quot;zh&quot;;</span><br><span class="line">    public static String LANGUAGE_TYPE_ENGLISH &#x3D; &quot;en&quot;;</span><br><span class="line">    public static String LANGUAGE_TYPE_NUll &#x3D; &quot;null&quot;;</span><br><span class="line"></span><br><span class="line">    public static String getLanguageType() &#123;</span><br><span class="line">        Context context &#x3D; ContextUtil.getcontext();</span><br><span class="line">        SharedPreferences sp &#x3D; context.getSharedPreferences(LANGUAGE_KEY, Context.MODE_WORLD_READABLE);</span><br><span class="line">        return sp.getString(LANGUAGE_KEY, LANGUAGE_TYPE_NUll);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void insertLanguageType(String type) &#123;</span><br><span class="line">        Context context &#x3D; ContextUtil.getcontext();</span><br><span class="line">        SharedPreferences sp &#x3D; context.getSharedPreferences(LANGUAGE_KEY, Context.MODE_WORLD_READABLE);</span><br><span class="line">        SharedPreferences.Editor editor &#x3D; sp.edit();</span><br><span class="line">        editor.putString(LANGUAGE_KEY, type);</span><br><span class="line">        editor.commit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="二-8-0后作出的改动"><a href="#二-8-0后作出的改动" class="headerlink" title="二.8.0后作出的改动"></a>二.8.0后作出的改动</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public static void changeLanguage() &#123;</span><br><span class="line">        Context context &#x3D; ContextUtil.getcontext();</span><br><span class="line">        &#x2F;&#x2F;获取设置</span><br><span class="line">        String sta &#x3D; Store.getLanguageType();</span><br><span class="line">        if (!Store.LANGUAGE_TYPE_NUll.equals(sta)) &#123;</span><br><span class="line">            Resources resources &#x3D; context.getApplicationContext().getResources();</span><br><span class="line">            DisplayMetrics dm &#x3D; resources.getDisplayMetrics();</span><br><span class="line">            Configuration config &#x3D; resources.getConfiguration();</span><br><span class="line">            Locale locale &#x3D; getSetLanguageLocale(context);&#x2F;&#x2F;获取sp里面保存的语言</span><br><span class="line">            if (Build.VERSION.SDK_INT &gt;&#x3D; Build.VERSION_CODES.JELLY_BEAN_MR1) &#123;</span><br><span class="line">                config.setLocale(locale);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                config.locale &#x3D; locale;</span><br><span class="line">            &#125;</span><br><span class="line">            if (Build.VERSION.SDK_INT &gt;&#x3D; Build.VERSION_CODES.N) &#123;</span><br><span class="line">                LocaleList localeList &#x3D; new LocaleList(locale);</span><br><span class="line">                LocaleList.setDefault(localeList);</span><br><span class="line">                config.setLocales(localeList);</span><br><span class="line">                context.getApplicationContext().createConfigurationContext(config);</span><br><span class="line">                Locale.setDefault(locale);</span><br><span class="line">            &#125;</span><br><span class="line">            resources.updateConfiguration(config, dm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>当版本8.0以后，增加了通过config.setLocales去修改多语言。</p>
-<p>当然app都会在Application类的onCreate方法执行读取该APP设置的语言进行设置更换的方法，但是我们现在还需要在Application类加这段代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onConfigurationChanged(Configuration newConfig) &#123;</span><br><span class="line">   super.onConfigurationChanged(newConfig);</span><br><span class="line">   ChangeLanguageUtil.changeLanguage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="三-在高版本中废弃了updateConfiguration方法，替代方法为createConfigurationContext。"><a href="#三-在高版本中废弃了updateConfiguration方法，替代方法为createConfigurationContext。" class="headerlink" title="三.在高版本中废弃了updateConfiguration方法，替代方法为createConfigurationContext。"></a>三.在高版本中废弃了updateConfiguration方法，替代方法为createConfigurationContext。</h5><p>意思就是多语言需要传递到context，所以每个context都得有，所以想了一个办法，每个activity都会有基类即是自己定义的BaseActivity，所以我们只要在基类加如下代码即可适配8.0或更高版本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void attachBaseContext(Context base) &#123;</span><br><span class="line">  super.attachBaseContext(LanguageUtils.attachBaseContext(base));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class LanguageUtils &#123;</span><br><span class="line">    public static Context attachBaseContext(Context context) &#123;</span><br><span class="line">        if (Build.VERSION.SDK_INT &gt;&#x3D; Build.VERSION_CODES.N) &#123; &#x2F;&#x2F; 8.0需要使用createConfigurationContext处理</span><br><span class="line">            return updateResources(context);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return context;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @TargetApi(Build.VERSION_CODES.N)</span><br><span class="line">    private static Context updateResources(Context context) &#123;</span><br><span class="line">        Resources resources &#x3D; context.getResources();</span><br><span class="line">        Locale locale &#x3D; getSetLanguageLocale(context);&#x2F;&#x2F;获取sp里面保存的语言</span><br><span class="line">        Configuration configuration &#x3D; resources.getConfiguration();</span><br><span class="line">        configuration.setLocale(locale);</span><br><span class="line">        configuration.setLocales(new LocaleList(locale));</span><br><span class="line">        return context.createConfigurationContext(configuration);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取选择的语言设置</span><br><span class="line">     *</span><br><span class="line">     * @param context</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private static Locale getSetLanguageLocale(Context context) &#123;</span><br><span class="line">        switch (Store.getLanguageType()) &#123;</span><br><span class="line">            case &quot;null&quot;:&#x2F;&#x2F;跟随系统</span><br><span class="line">                return getSystemLocale();</span><br><span class="line">            case &quot;zh&quot;:&#x2F;&#x2F;汉语</span><br><span class="line">                return Locale.CHINESE;</span><br><span class="line">            case &quot;en&quot;:&#x2F;&#x2F;英语</span><br><span class="line">                return Locale.ENGLISH;</span><br><span class="line">            default:&#x2F;&#x2F;默认 汉语</span><br><span class="line">                return Locale.CHINESE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取系统local</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static Locale getSystemLocale() &#123;</span><br><span class="line">        Locale locale &#x3D; Resources.getSystem().getConfiguration().locale;</span><br><span class="line">        Log.e(&quot;SNN&quot;, &quot;系统获取  ：getLanguage : &quot; +            Locale.getDefault().getLanguage());</span><br><span class="line">        return locale;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试完毕，在8.0或更高版本可以正常切换多语言了。</p>
+<p>volley内部返回的response可以获取到Header信息，由于header信息是map类型的，所以要获取某个key的值，则通过</p>
+<p>response.headers.get(“key”)来获取。</p>
 
         </div>
         
@@ -296,7 +290,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            14
+                            17
                         </p>
                     </a>
                 </div>
@@ -308,7 +302,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            6
+                            8
                         </p>
                     </a>
                 </div>
@@ -320,7 +314,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            22
+                            26
                         </p>
                     </a>
                 </div>
@@ -397,9 +391,17 @@
                 <span class="level-item">React</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
-        </a></li><li>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/React/umi/">
+            <span class="level-start">
+                <span class="level-item">umi</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Springboot/">
             <span class="level-start">
                 <span class="level-item">Springboot</span>
@@ -421,12 +423,20 @@
                 <span class="level-item">android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/hexo/">
             <span class="level-start">
                 <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/nginx/">
+            <span class="level-start">
+                <span class="level-item">nginx</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -442,7 +452,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Fetch/" style="font-size: 10px;">Fetch</a> <a href="/tags/Locale/" style="font-size: 10px;">Locale</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/upload/" style="font-size: 10px;">upload</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Fetch/" style="font-size: 10px;">Fetch</a> <a href="/tags/Locale/" style="font-size: 10px;">Locale</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/antd/" style="font-size: 10px;">antd</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/securecrt/" style="font-size: 10px;">securecrt</a> <a href="/tags/umi/" style="font-size: 10px;">umi</a> <a href="/tags/upload/" style="font-size: 10px;">upload</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -454,6 +464,63 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="windows10如何重启linux服务器上的nginx服务器">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T07:09:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">windows10如何重启linux服务器上的nginx服务器</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/android/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android10关于文件读取不到的解决办法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T06:48:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/android/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android10关于文件读取不到的解决办法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/android/">android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中umi升级2.0到3.0（antd项目）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-27T02:01:00.000Z">2020-09-27</time></div>
+                    <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中umi升级2.0到3.0（antd项目）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a> / <a class="has-link-grey -link" href="/categories/React/umi/">umi</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -493,63 +560,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用fetch进行文件上传并与后台验证md5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:55:00.000Z">2020-04-29</time></div>
-                    <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用fetch进行文件上传并与后台验证md5</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在react中使用websocket">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time></div>
-                    <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在react中使用websocket</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time></div>
-                    <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -560,6 +570,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/08/">
@@ -681,7 +702,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -702,6 +723,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/android/">
                         <span class="tag">android</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/antd/">
+                        <span class="tag">antd</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -735,6 +763,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/md5/">
                         <span class="tag">md5</span>
                         <span class="tag is-grey">1</span>
@@ -744,6 +779,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/securecrt/">
+                        <span class="tag">securecrt</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/umi/">
+                        <span class="tag">umi</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -807,6 +856,63 @@
         
         <article class="media">
             
+            <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="windows10如何重启linux服务器上的nginx服务器">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T07:09:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">windows10如何重启linux服务器上的nginx服务器</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/android/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android10关于文件读取不到的解决办法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T06:48:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/android/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android10关于文件读取不到的解决办法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/android/">android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中umi升级2.0到3.0（antd项目）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-27T02:01:00.000Z">2020-09-27</time></div>
+                    <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中umi升级2.0到3.0（antd项目）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a> / <a class="has-link-grey -link" href="/categories/React/umi/">umi</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="android选择文件后返回路径无法正常读取文件">
@@ -843,63 +949,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用fetch进行文件上传并与后台验证md5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:55:00.000Z">2020-04-29</time></div>
-                    <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用fetch进行文件上传并与后台验证md5</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在react中使用websocket">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time></div>
-                    <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在react中使用websocket</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time></div>
-                    <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -910,6 +959,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/08/">
@@ -1031,7 +1091,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1052,6 +1112,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/android/">
                         <span class="tag">android</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/antd/">
+                        <span class="tag">antd</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1085,6 +1152,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/md5/">
                         <span class="tag">md5</span>
                         <span class="tag is-grey">1</span>
@@ -1094,6 +1168,621 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/securecrt/">
+                        <span class="tag">securecrt</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/umi/">
+                        <span class="tag">umi</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/upload/">
+                        <span class="tag">upload</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/uri/">
+                        <span class="tag">uri</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/websocket/">
+                        <span class="tag">websocket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/">
+                        <span class="tag">多语言</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/avatar.png" alt="冯驰的博客" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 冯驰&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://www.fengchi.site',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>tags has-addons" href="/tags/websocket/">
+                        <span class="tag">websocket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/">
+                        <span class="tag">多语言</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="windows10如何重启linux服务器上的nginx服务器">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T07:09:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">windows10如何重启linux服务器上的nginx服务器</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/android/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android10关于文件读取不到的解决办法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T06:48:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/android/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android10关于文件读取不到的解决办法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/android/">android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中umi升级2.0到3.0（antd项目）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-27T02:01:00.000Z">2020-09-27</time></div>
+                    <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中umi升级2.0到3.0（antd项目）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a> / <a class="has-link-grey -link" href="/categories/React/umi/">umi</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android选择文件后返回路径无法正常读取文件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-08-10T01:59:00.000Z">2020-08-10</time></div>
+                    <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android选择文件后返回路径无法正常读取文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/08/05/Android%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E8-0%E4%BB%A5%E4%B8%8A%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Android多语言切换（适用于8.0以上）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-08-05T06:18:00.000Z">2020-08-05</time></div>
+                    <a href="/2020/08/05/Android%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E8-0%E4%BB%A5%E4%B8%8A%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Android多语言切换（适用于8.0以上）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Canvas/">
+                        <span class="tag">Canvas</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Cascader/">
+                        <span class="tag">Cascader</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Cookie/">
+                        <span class="tag">Cookie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Fetch/">
+                        <span class="tag">Fetch</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Locale/">
+                        <span class="tag">Locale</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/React/">
+                        <span class="tag">React</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Springboot/">
+                        <span class="tag">Springboot</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/android/">
+                        <span class="tag">android</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/antd/">
+                        <span class="tag">antd</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/file/">
+                        <span class="tag">file</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/github/">
+                        <span class="tag">github</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/http/">
+                        <span class="tag">http</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/md5/">
+                        <span class="tag">md5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nginx/">
+                        <span class="tag">nginx</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/securecrt/">
+                        <span class="tag">securecrt</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/umi/">
+                        <span class="tag">umi</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

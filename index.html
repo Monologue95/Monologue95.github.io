@@ -141,6 +141,167 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-09-30T07:09:00.000Z">2020-09-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 141 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/">windows10如何重启linux服务器上的nginx服务器</a>
+            
+        </h1>
+        <div class="content">
+            <p>因为我们项目是搭建在linux系统上的，现在我们的nginx的cong.f文件需要修改，所以需要重启nginx服务。</p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<h5 id="一-下载软件SecureCrt，连接linux服务器"><a href="#一-下载软件SecureCrt，连接linux服务器" class="headerlink" title="一.下载软件SecureCrt，连接linux服务器"></a>一.下载软件SecureCrt，连接linux服务器</h5><p><img src="/images/pasted-48.png" alt="upload successful"></p>
+<p><img src="/images/pasted-49.png" alt="upload successful"></p>
+<p><img src="/images/pasted-50.png" alt="upload successful"></p>
+<p><img src="/images/pasted-51.png" alt="upload successful"><br> 这里输入你服务器的密码，点击确定。出现下面界面。</p>
+<p><img src="/images/pasted-52.png" alt="upload successful"><br>即为连接成功。</p>
+<h5 id="二-重启nginx服务"><a href="#二-重启nginx服务" class="headerlink" title="二.重启nginx服务"></a>二.重启nginx服务</h5><p><img src="/images/pasted-53.png" alt="upload successful"><br>输入nginx -s reload ，测试验证重启成功</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-09-30T06:48:00.000Z">2020-09-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 249 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/09/30/android/">android10关于文件读取不到的解决办法</a>
+            
+        </h1>
+        <div class="content">
+            <p>最近项目中有人提出来说拍照没法拍，我的第一反应是之前项目一直是好的，按道理不是硬件代码的问题。结合了自己昨天刚把测试机升到了android10，所以箭头指向了android版本。于是用了测试机试了一下，果不其然也报错了。错误信息是 java.io.FileNotFoundException。就是找不到该文件了，于是翻阅资料发现，在AndroidManifest.xml 里的application中添加 android:requestLegacyExternalStorage=“true” 临时解决。可以兼容到Android 11。或者targetsdk 降低到29以下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;application  </span><br><span class="line">  android:requestLegacyExternalStorage&#x3D;&quot;true&quot;</span><br><span class="line">&gt;</span><br><span class="line">&#96;&#96;&#96;    </span><br><span class="line">还有类似还有一个问题，就是我申请了读写权限，但是就是指向不到文件，所以就一直没办法拍照。后来研究发现，是因为还需要再手动给一次权限。</span><br></pre></td></tr></table></figure>
+<p>if (ActivityCompat.checkSelfPermission(WaitActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {       ActivityCompat.requestPermissions(WaitActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);<br>}<br>```</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-09-27T02:01:00.000Z">2020-09-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/React/">React</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/React/umi/">umi</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 387 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/">react中umi升级2.0到3.0（antd项目）</a>
+            
+        </h1>
+        <div class="content">
+            <p>因为项目要用到antd4.0最新的紧凑模式，所以决定使用官网推荐的使用方式，将umi升到3.0，设置属性compact为true即可。下面是项目主要的修改及配置。</p>
+<h5 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">-   &quot;umi&quot;: &quot;^2&quot;</span><br><span class="line">+   &quot;umi&quot;: &quot;^3&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">-   &quot;umi-plugin-react&quot;: &quot;^1&quot;</span><br><span class="line">+   &quot;@umijs&#x2F;preset-react&quot;: &quot;^1&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="config-js"><a href="#config-js" class="headerlink" title="config.js"></a>config.js</h5><p>umi配置方式修改了，所以config.js文件中也要相应修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">- plugins: [</span><br><span class="line">-   [&#39;umi-plugin-react&#39;, &#123;</span><br><span class="line">-     dva: &#123;&#125;,</span><br><span class="line">-     antd: &#123;&#125;,</span><br><span class="line">-     ...</span><br><span class="line">-   &#125;]</span><br><span class="line">- ],</span><br><span class="line">+ dva: &#123;&#125;,</span><br><span class="line">+ antd: &#123;&#125;,</span><br><span class="line">+ ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="代码层"><a href="#代码层" class="headerlink" title="代码层"></a>代码层</h5><p>删除了 routes、library、dll、hardSource、pwa、hd、fastClick、chunks，不可继续使用<br>内置 dynamicImport、title、scripts、headScripts、metas 和 links 到 Umi 中，可继续使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- import Link from &#39;umi&#x2F;link&#39;;</span><br><span class="line">+ import &#123; Link &#125; from &#39;umi&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- import router from &#39;umi&#x2F;router&#39;;</span><br><span class="line">+ import &#123; history &#125; from &#39;umi&#39;;</span><br><span class="line">- router.push(&#39;&#x2F;foo&#39;);</span><br><span class="line">+ history.push(&#39;&#x2F;foo&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 别名</span><br><span class="line">- background: url(@&#x2F;utils&#x2F;utils.less);</span><br><span class="line">+ background: url(~@&#x2F;utils&#x2F;utils.less);</span><br><span class="line"># 三方库</span><br><span class="line">- @import url(foo&#x2F;bar.css);</span><br><span class="line">+ @import url(~foo&#x2F;bar.css);</span><br></pre></td></tr></table></figure>
+<h5 id="还有一些注意的问题"><a href="#还有一些注意的问题" class="headerlink" title="还有一些注意的问题"></a>还有一些注意的问题</h5><p>1.一共升级了3个项目，前两个项目是好的，最后一个紧凑一直出不来，之前试了一直以为是umi没有配置好，但是试了好几次都不行。最后反复调试，才发现我某一个文件中曾经导入了这个css文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#39;antd&#x2F;dist&#x2F;antd.css&#39;;</span><br></pre></td></tr></table></figure>
+<p>这就导致css文件把我的紧凑模型的less给覆盖掉了，所以使用antd的小伙伴需要注意一下。</p>
+<p>2.window.g_app._store获取不到dispatch了。得使用getDvaApp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import &#123; getDvaApp &#125; from &#39;umi&#39;;</span><br><span class="line"></span><br><span class="line">getDvaApp()._store.dispatch(&#123;</span><br><span class="line">  type: &#39;login&#x2F;jumpToLogin&#39;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>还有其他升级的需要注意的也会陆续更新。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-08-10T01:59:00.000Z">2020-08-10</time>
                 
                 <div class="level-item">
@@ -556,212 +717,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-26T07:47:00.000Z">2020-03-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 570 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/26/Js%E6%95%B0%E7%BB%84%E6%95%B4%E7%90%86%EF%BC%88React%E4%B8%AD%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9A%E4%BD%8D%E5%88%B0col%EF%BC%8Crow-%EF%BC%89/">Js数组整理（React中用数组定位到col，row)）</a>
-            
-        </h1>
-        <div class="content">
-            <p>项目中遇到了一个需求，要求按照返回的数据的category进行分类，然后再根据row，col字段去调整每个item在哪一行那一列，所有先看后台返回给我这样的一个数组。</p>
-<p><img src="/images/pasted-40.png" alt="初始的数组列表"></p>
-<p><img src="/images/pasted-42.png" alt="初始的数组列表"><br>观察下来就是一个简单的数组，里面有大概多少条数据，不存在任何的层级关系。</p>
-<h5 id="一-根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下："><a href="#一-根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下：" class="headerlink" title="一.根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下："></a>一.根据项目需要，我们先得把数组按照category字段分类。遇到写了一个方法去整理这个数组。方法如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function analysisArray(data)&#123;</span><br><span class="line">  var moth &#x3D; [],</span><br><span class="line">    flag &#x3D; 0,</span><br><span class="line">    list &#x3D; data;</span><br><span class="line">  var wdy &#x3D; &#123;</span><br><span class="line">    title: &#39;&#39;,</span><br><span class="line">    sub_item: &#39;&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  for (var i &#x3D; 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    var az &#x3D; &#39;&#39;;</span><br><span class="line">    for (var j &#x3D; 0; j &lt; moth.length; j++) &#123;</span><br><span class="line">        if (moth[j].title &#x3D;&#x3D; list[i][&#39;category&#39;]) &#123;</span><br><span class="line">            flag &#x3D; 1;</span><br><span class="line">            az &#x3D; j;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (flag &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        var ab &#x3D; moth[az];</span><br><span class="line">        ab.sub_item.push(list[i]);</span><br><span class="line">        flag &#x3D; 0;</span><br><span class="line"> </span><br><span class="line">    &#125; else if (flag &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        wdy &#x3D; &#123;&#125;;</span><br><span class="line">        wdy.title &#x3D; list[i][&#39;category&#39;];</span><br><span class="line">        wdy.sub_item &#x3D; new Array();</span><br><span class="line">        wdy.sub_item.push(list[i]);</span><br><span class="line">        moth.push(wdy);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">   return moth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过这个方法我们可以实现category分类。如下图</p>
-<p><img src="/images/pasted-41.png" alt="按照category分类"></p>
-<h5 id="二-要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下："><a href="#二-要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下：" class="headerlink" title="二.要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下："></a>二.要将每个分类里面的处于同一行的再整理，按照row去整理，这样遍历数组时才能实现定位，一行有几条数据，一共有多少行。方法如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function analysisCol(subItem)&#123;</span><br><span class="line">  var list &#x3D; subItem,</span><br><span class="line">      flag &#x3D; 0,</span><br><span class="line">      data &#x3D; [];         </span><br><span class="line">  for(var i &#x3D; 0; i&lt; list.length; i++) &#123;</span><br><span class="line">      var az &#x3D; &#39;&#39;;</span><br><span class="line">      for (var j &#x3D; 0; j &lt; data.length; j++) &#123;</span><br><span class="line">          if(data[j][0].row &#x3D;&#x3D; list[i].row) &#123;</span><br><span class="line">              flag &#x3D; 1;</span><br><span class="line">              az &#x3D; j;</span><br><span class="line">              break;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if(flag &#x3D;&#x3D; 1)&#123;</span><br><span class="line">          data[az].push(list[i]);</span><br><span class="line">          flag &#x3D; 0;</span><br><span class="line">      &#125; else if (flag &#x3D;&#x3D; 0) &#123;</span><br><span class="line">          var wdy &#x3D; new Array();</span><br><span class="line">          wdy.push(list[i]);</span><br><span class="line">          data.push(wdy);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过遍历按照category分类的数组，然后取出里面的sub_item子项数组，调用该方法，最后得出的数组如下：<br><img src="/images/pasted-45.png" alt="最终需要的数组"><br>先按照category分类，再按照row去分类，得出我们要的数组，最后通过3重循环，就可以得到我们想到的效果了。代码如下：</p>
-<pre><code>{
-         Array.isArray(codData)?codData.map((item,index) =&gt; (
-            &lt;Card title={item.title} type=&quot;inner&quot; id={index} key={index}&gt;
-              &lt;div&gt;
-              &lt;Row&gt;
-                {
-                  item.sub_item.map((values, index) =&gt; {
-                    return (
-                    &lt;Row&gt;
-                      {
-                        values.map((itemValues, itemIndex) =&gt; {
-                          const optionArr = itemValues.scope ? itemValues.scope.split(&quot;;&quot;) : [&quot;&quot;];
-                          return (
-                            &lt;span key={itemIndex}&gt;
-                              &lt;Col span={4} style={{ marginBottom: 8 }}&gt;
-                                &lt;div style={{ lineHeight: 2 }}&gt;
-                                  {itemValues.name} : &amp;nbsp;
-                                &lt;/div&gt;
-                              &lt;/Col&gt;
-                              &lt;Col span={4} style={{ marginBottom: 8 }}&gt;
-                                {
-                                  itemValues.type &amp;&amp; itemValues.type === &quot;下拉框&quot; ? (
-                                    &lt;Select value={itemValues.value} style={{ width: 150 }} onChange={(record) =&gt; this.changeOptionValue(record,itemValues)}&gt;
-                                      {optionArr.map(optionKey =&gt; (
-                                        &lt;Option value={optionKey}&gt;{optionKey}&lt;/Option&gt;
-                                      ))}
-                                    &lt;/Select&gt;
-                                  ) : (
-                                    &lt;Input
-                                      style={{ width: 150 }} 
-                                      onChange={(e) =&gt; this.changeInputValue(e.target.value,itemValues)}
-                                      defaultValue={itemValues.value}
-                                    /&gt;
-                                  )
-                                }
-                              &lt;/Col&gt;
-                            &lt;/span&gt;
-                          ) //截止点
-                        })
-                      }
-                    &lt;/Row&gt;//第二截止点
-                    )
-                  })
-                }
-                &lt;/Row&gt;
-              &lt;/div&gt;
-            &lt;/Card&gt;
-           )):null
-        } </code></pre><p><img src="/images/pasted-44.png" alt="最终达到的效果"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-06T05:44:00.000Z">2020-03-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/hexo/">hexo</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 280 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/06/hexo%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/">hexo绑定个人域名以及如何发布博客</a>
-            
-        </h1>
-        <div class="content">
-            <h5 id="绑定个人域名"><a href="#绑定个人域名" class="headerlink" title="绑定个人域名"></a>绑定个人域名</h5><p>用 hexo 搭建的个人博客，服务器用的是 github 的，然后域名默认也是 github 下的二级域名：username.github.io,我使用的是monologue95.github.io。绑定域名一共三个步骤</p>
-<p>①先在阿里云域名管理的地方进行域名解析</p>
-<p><img src="/images/pasted-34.png" alt="域名解析界面"></p>
-<p>②设置CNAME</p>
-<p>在 hexo 项目下，source 文件夹下面创建 CNAME 文件（没有后缀名的），在里面写上购买的域名。</p>
-<p><img src="/images/pasted-35.png" alt="upload successful"></p>
-<p>③在 github 上面，打开 username.github.io 项目的（Settings）设置，然后在 GitHub Pages的 Custom domain设置里填上购买的域名。</p>
-<p><img src="/images/pasted-36.png" alt="upload successful"></p>
-<p>域名配置完成，可以通过blog.fengchi.site访问了</p>
-<p><img src="/images/pasted-38.png" alt="upload successful"></p>
-<h5 id="如何发布博客"><a href="#如何发布博客" class="headerlink" title="如何发布博客"></a>如何发布博客</h5><p>通过hexo admin来管理博客 通过localhost://4000/admin来管理<br><img src="/images/pasted-39.png" alt="upload successful"></p>
-<p>然后通过hexo g或者hexo generate去生成静态文件</p>
-<p>然后在通过hexo d或者hexo deploy去部署网站上传到github</p>
-<p>再次访问博客，即可发布成功</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-17T06:40:00.000Z">2020-02-17</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 454 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/17/react%E4%B8%AD%E4%BD%BF%E7%94%A8canvas%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/">react中使用canvas进行图片合成</a>
-            
-        </h1>
-        <div class="content">
-            <p>最近react项目里需要动态变换图片里的某一个部件，然后整张图片重新加载。想了一下之前在java里是使用的ImageIO和BufferedImage进行合成的，看了一下由于项目需求是动态变换图片的，所以想的方法是利用canvas定义一个画布，然后drawImage，最后使用canvas.toDataURL转换成base64的图片，可供下载。项目代码如下，一个js文件即可实现功能。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">class photoSynthesis extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.initCanvas &#x3D; this.initCanvas.bind(this)</span><br><span class="line">  &#125;</span><br><span class="line">  initCanvas() &#123;</span><br><span class="line">    let canvas1 &#x3D; document.getElementById(&quot;customCanvas&quot;);</span><br><span class="line">    canvas1.width &#x3D; 800;</span><br><span class="line">    canvas1.height &#x3D; 1300;</span><br><span class="line">    let context1 &#x3D; canvas1.getContext(&quot;2d&quot;);</span><br><span class="line">    context1.rect(0 , 0 , canvas1.width , canvas1.height);</span><br><span class="line">    context1.fillStyle &#x3D; &quot;#fff&quot;;</span><br><span class="line">    context1.fill();</span><br><span class="line">    var myImage &#x3D; new Image();</span><br><span class="line">    myImage.src &#x3D; require(&quot;.&#x2F;diaoding.png&quot;);  &#x2F;&#x2F;背景图片 你自己本地的图片或者在线图片</span><br><span class="line">    myImage.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">    myImage.onload &#x3D; function()&#123;</span><br><span class="line">      context1.drawImage(myImage , 0 , 0 , 627 , 262);</span><br><span class="line">      &#x2F;&#x2F; context1.font &#x3D; &quot;60px Courier New&quot;;</span><br><span class="line">      &#x2F;&#x2F; context1.fillText(&quot;合成的图片&quot;,350,450);</span><br><span class="line">      var myImage2 &#x3D; new Image();</span><br><span class="line">      myImage2.src &#x3D; require(&quot;.&#x2F;zuoce.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">      myImage2.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">      myImage2.onload &#x3D; function()&#123;</span><br><span class="line">        context1.drawImage(myImage2 , 0 , 0 , 138 , 1226);</span><br><span class="line">        &#x2F;&#x2F;var base64 &#x3D; canvas1.toDataURL(&quot;image&#x2F;png&quot;); &#x2F;&#x2F;&quot;image&#x2F;png&quot; 这里注意一下</span><br><span class="line">        &#x2F;&#x2F;var img &#x3D; document.getElementById(&#39;avatar&#39;);</span><br><span class="line">        &#x2F;&#x2F; document.getElementById(&#39;avatar&#39;).src &#x3D; base64;</span><br><span class="line">        &#x2F;&#x2F;img.setAttribute(&#39;src&#39; , base64);</span><br><span class="line">        var myImage3 &#x3D; new Image();</span><br><span class="line">        myImage3.src &#x3D; require(&quot;.&#x2F;houbi1.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">        myImage3.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">        myImage3.onload &#x3D; function()&#123;</span><br><span class="line">          context1.drawImage(myImage3 , 136 , 260 , 360 , 700);</span><br><span class="line">          &#x2F;&#x2F;var base64 &#x3D; canvas1.toDataURL(&quot;image&#x2F;png&quot;); &#x2F;&#x2F;&quot;image&#x2F;png&quot; 这里注意一下</span><br><span class="line">          var myImage4 &#x3D; new Image();</span><br><span class="line">          myImage4.src &#x3D; require(&quot;.&#x2F;youce.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">          myImage4.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">          myImage4.onload &#x3D; function()&#123;</span><br><span class="line">            context1.drawImage(myImage4 , 490 , 0 , 135 , 1205);</span><br><span class="line">            var myImage5 &#x3D; new Image();</span><br><span class="line">            myImage5.src &#x3D; require(&quot;.&#x2F;diban.png&quot;);  &#x2F;&#x2F;你自己本地的图片或者在线图片</span><br><span class="line">            myImage5.crossOrigin &#x3D; &#39;Anonymous&#39;;</span><br><span class="line">            myImage5.onload &#x3D; function()&#123;</span><br><span class="line">              context1.drawImage(myImage5 , 0 , 954 , 630 , 255);</span><br><span class="line">              var base64 &#x3D; canvas1.toDataURL(&quot;image&#x2F;png&quot;); &#x2F;&#x2F;&quot;image&#x2F;png&quot; 这里注意一下</span><br><span class="line">              &#x2F;&#x2F;var img &#x3D; document.getElementById(&#39;avatar&#39;);</span><br><span class="line">              &#x2F;&#x2F; document.getElementById(&#39;avatar&#39;).src &#x3D; base64;</span><br><span class="line">              &#x2F;&#x2F;img.setAttribute(&#39;src&#39; , base64);</span><br><span class="line">          &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.initCanvas()</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidUpdate() &#123;</span><br><span class="line">    this.initCanvas()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; width, height, canvaswidth, canvasheight &#125; &#x3D; this.props</span><br><span class="line">    return (</span><br><span class="line">      &lt;div style&#x3D;&#123;&#123; display:&quot;flex&quot;,flexDirection:&quot;column&quot; &#125;&#125;&gt;</span><br><span class="line">        &lt;div style&#x3D;&#123;&#123; display:&quot;flex&quot;,flexDirection:&quot;row&quot; &#125;&#125;&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 200, height: 83, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;diaoding.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 100, height: 200, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;zuoce.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 103, height: 200, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;houbi1.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 100, height: 200, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;youce.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">          &lt;img style&#x3D;&#123;&#123; width: 200, height: 84, padding: 10 &#125;&#125; src&#x3D;&#123;require(&#39;.&#x2F;diban.png&#39;)&#125;&gt;&lt;&#x2F;img&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;canvas id&#x3D;&quot;customCanvas&quot; width&#x3D;&#123;canvaswidth&#125; height&#x3D;&#123;canvasheight&#125;&gt;&lt;&#x2F;canvas&gt;</span><br><span class="line">        &#123;&#x2F;* &lt;img id&#x3D;&quot;avatar&quot; &gt;&lt;&#x2F;img&gt; *&#x2F;&#125;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default photoSynthesis;</span><br></pre></td></tr></table></figure>
-
-<p>csdn链接：<br><a href="https://blog.csdn.net/qq_28670711/article/details/104358345">https://blog.csdn.net/qq_28670711/article/details/104358345</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -826,7 +781,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            14
+                            17
                         </p>
                     </a>
                 </div>
@@ -838,7 +793,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            6
+                            8
                         </p>
                     </a>
                 </div>
@@ -850,7 +805,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            22
+                            26
                         </p>
                     </a>
                 </div>
@@ -927,9 +882,17 @@
                 <span class="level-item">React</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
-        </a></li><li>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/React/umi/">
+            <span class="level-start">
+                <span class="level-item">umi</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Springboot/">
             <span class="level-start">
                 <span class="level-item">Springboot</span>
@@ -951,12 +914,20 @@
                 <span class="level-item">android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/hexo/">
             <span class="level-start">
                 <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/nginx/">
+            <span class="level-start">
+                <span class="level-item">nginx</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -972,7 +943,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Fetch/" style="font-size: 10px;">Fetch</a> <a href="/tags/Locale/" style="font-size: 10px;">Locale</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/upload/" style="font-size: 10px;">upload</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
+        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Cascader/" style="font-size: 10px;">Cascader</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Fetch/" style="font-size: 10px;">Fetch</a> <a href="/tags/Locale/" style="font-size: 10px;">Locale</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Springboot/" style="font-size: 10px;">Springboot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/antd/" style="font-size: 10px;">antd</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/securecrt/" style="font-size: 10px;">securecrt</a> <a href="/tags/umi/" style="font-size: 10px;">umi</a> <a href="/tags/upload/" style="font-size: 10px;">upload</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a>
     </div>
 </div>
     
@@ -984,6 +955,63 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="windows10如何重启linux服务器上的nginx服务器">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T07:09:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">windows10如何重启linux服务器上的nginx服务器</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/android/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android10关于文件读取不到的解决办法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T06:48:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/android/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android10关于文件读取不到的解决办法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/android/">android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中umi升级2.0到3.0（antd项目）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-27T02:01:00.000Z">2020-09-27</time></div>
+                    <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中umi升级2.0到3.0（antd项目）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a> / <a class="has-link-grey -link" href="/categories/React/umi/">umi</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1023,63 +1051,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用fetch进行文件上传并与后台验证md5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:55:00.000Z">2020-04-29</time></div>
-                    <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用fetch进行文件上传并与后台验证md5</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在react中使用websocket">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time></div>
-                    <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在react中使用websocket</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time></div>
-                    <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1090,6 +1061,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/08/">
@@ -1211,7 +1193,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1232,6 +1214,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/android/">
                         <span class="tag">android</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/antd/">
+                        <span class="tag">antd</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1265,6 +1254,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/md5/">
                         <span class="tag">md5</span>
                         <span class="tag is-grey">1</span>
@@ -1274,6 +1270,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/securecrt/">
+                        <span class="tag">securecrt</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/umi/">
+                        <span class="tag">umi</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1337,6 +1347,63 @@
         
         <article class="media">
             
+            <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="windows10如何重启linux服务器上的nginx服务器">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T07:09:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/windows10%E5%A6%82%E4%BD%95%E9%87%8D%E5%90%AFlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">windows10如何重启linux服务器上的nginx服务器</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/30/android/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="android10关于文件读取不到的解决办法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-30T06:48:00.000Z">2020-09-30</time></div>
+                    <a href="/2020/09/30/android/" class="title has-link-black-ter is-size-6 has-text-weight-normal">android10关于文件读取不到的解决办法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/android/">android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中umi升级2.0到3.0（antd项目）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-27T02:01:00.000Z">2020-09-27</time></div>
+                    <a href="/2020/09/27/react%E4%B8%ADumi%E5%8D%87%E7%BA%A72-0%E5%88%B03-0%EF%BC%88antd%E9%A1%B9%E7%9B%AE%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中umi升级2.0到3.0（antd项目）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/React/">React</a> / <a class="has-link-grey -link" href="/categories/React/umi/">umi</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/08/10/%E8%A7%A3%E5%86%B3android4-4%E4%BB%A5%E4%B8%8A%E6%9C%BA%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="android选择文件后返回路径无法正常读取文件">
@@ -1373,63 +1440,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react中使用fetch进行文件上传并与后台验证md5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:55:00.000Z">2020-04-29</time></div>
-                    <a href="/2020/04/29/react%E4%B8%AD%E4%BD%BF%E7%94%A8fetch%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81md5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">react中使用fetch进行文件上传并与后台验证md5</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在react中使用websocket">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-22T01:45:00.000Z">2020-04-22</time></div>
-                    <a href="/2020/04/22/%E5%A6%82%E4%BD%95%E5%9C%A8react%E4%B8%AD%E4%BD%BF%E7%94%A8websocket/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在react中使用websocket</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-09T01:56:00.000Z">2020-04-09</time></div>
-                    <a href="/2020/04/09/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E9%80%9A%E8%BF%87cookie%E5%AE%9E%E7%8E%B0%EF%BC%89%EF%BC%89/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何在同一域名不同端口的两个平台实现自动登录（通过cookie实现））</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1440,6 +1450,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/08/">
@@ -1561,7 +1582,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React/">
                         <span class="tag">React</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1582,6 +1603,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/android/">
                         <span class="tag">android</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/antd/">
+                        <span class="tag">antd</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1615,6 +1643,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/md5/">
                         <span class="tag">md5</span>
                         <span class="tag is-grey">1</span>
@@ -1624,6 +1659,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nginx/">
                         <span class="tag">nginx</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/securecrt/">
+                        <span class="tag">securecrt</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/umi/">
+                        <span class="tag">umi</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
